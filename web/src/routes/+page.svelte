@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { SiteQuery } from '$lib/sanity/queries';
+	import ImageGrid from '../components/ImageGrid.svelte';
 	import Nav from '../components/Nav.svelte';
 	import ResponsiveImage from '../components/ResponsiveImage/ResponsiveImage.svelte';
 	export let data: SiteQuery;
@@ -15,12 +16,8 @@
 	{/each}
 </ul>
 
-{#each data.overview as item}
-	<ResponsiveImage image={item} sizes="100px" alt="Nick Lavecchia" />
-{/each}
-
-<style>
-	:global(img) {
-		height: 100px;
-	}
-</style>
+<ImageGrid>
+	{#each data.overview as item}
+		<ResponsiveImage image={item} sizes="100px" alt="Nick Lavecchia" />
+	{/each}
+</ImageGrid>
