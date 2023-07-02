@@ -27,5 +27,10 @@
 		"typescript": "^5.0.0",
 		"vite": "^4.3.6"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@sanity/client": "^6.1.5",
+		"@sanity/image-url": "^1.0.2",
+		"groq": "^3.14.1"
+	}
 }

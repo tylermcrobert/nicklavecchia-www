@@ -1,2 +1,12 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	import { urlFor } from '$lib/sanity/client';
+	import type { SiteQuery } from '$lib/sanity/queries';
+	import Nav from '../components/Nav.svelte';
+	export let data: SiteQuery;
+</script>
+
+<Nav />
+
+{#each data.overview as item}
+	<img src={urlFor(item).width(40).url()} alt="Nick Lavecchia" />
+{/each}
