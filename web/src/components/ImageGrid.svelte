@@ -34,6 +34,7 @@
 	.imageGrid {
 		gap: var(--space-large) var(--space-standard);
 		padding: var(--space-standard);
+		padding-top: var(--space-large);
 
 		:global(img) {
 			margin-bottom: var(--space-standard);
