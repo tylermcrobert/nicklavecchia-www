@@ -1,4 +1,5 @@
 @import 'reset.scss';
+@import 'font.scss';
 @import 'vars.scss';
 
 * {
@@ -11,8 +12,10 @@ html,
 body {
 	font-size: 14px;
 	text-transform: uppercase;
-	font-family: sans-serif;
+	font-family: 'Basis', helvetica, sans-serif;
+	font-weight: 500;
 	letter-spacing: 0.02em;
+	color: #282e3c;
 }
 
 img,
