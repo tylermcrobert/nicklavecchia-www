@@ -1,11 +1,9 @@
 <script lang="ts">
 	import type { SiteQuery } from '$lib/sanity/queries';
-	import { Nav, ImageGrid, ResponsiveImage } from '../components';
+	import { ImageGrid, ResponsiveImage } from '../components';
 
 	export let data: SiteQuery;
 </script>
-
-<Nav />
 
 <ul>
 	{#each data.categories as category}

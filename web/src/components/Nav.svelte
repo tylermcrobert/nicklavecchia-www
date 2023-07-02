@@ -1,8 +1,8 @@
 <nav class="nav">
-	<div class="logo">Nick Lavecchia</div>
+	<div class="logo"><a href="/">Nick Lavecchia</a></div>
 	<ul class="links">
 		<li>Portfolio</li>
-		<li>About</li>
+		<li><a href="/about">About</a></li>
 		<li>Fine Art</li>
 	</ul>
 </nav>
