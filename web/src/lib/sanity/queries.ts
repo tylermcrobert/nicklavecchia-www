@@ -7,11 +7,25 @@ export const siteQuery = groq`
     categories[]-> {
       'slug': slug.current,
       title,
-      'projects': collections[]->
+      'projects': collections[]-> {
+        featured,
+        images,
+        "slug": slug.current,
+      }
     }
   }
 `;
 
 export type SiteQuery = {
 	overview: SanityImage[];
+	categories: WorkCategory[];
+};
+
+export type WorkCategory = {
+	slug: string;
+	title: string;
+	projects: {
+		featured: SanityImage;
+		images: SanityImage[];
+	};
 };
