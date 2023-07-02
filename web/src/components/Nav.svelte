@@ -4,7 +4,7 @@
 	const routes = [
 		{ display: 'Portfolio', href: '/' },
 		{ display: 'About', href: '/about' },
-		{ display: 'Fine Art', href: '/products' }
+		{ display: 'Fine Art', href: '/fine-art' }
 	];
 </script>
 
