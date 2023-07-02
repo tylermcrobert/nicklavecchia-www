@@ -32,17 +32,14 @@
 
 <style lang="scss">
 	.imageGrid {
-		gap: var(--space-large) var(--space-standard);
+		gap: var(--space-standard);
 		padding: var(--space-standard);
 		padding-top: var(--space-large);
-
-		:global(img) {
-			margin-bottom: var(--space-standard);
-		}
 
 		&.grid {
 			display: grid;
 			grid-template-columns: repeat(4, 1fr);
+			gap: var(--space-large) var(--space-standard);
 		}
 
 		&.inline {
@@ -50,6 +47,7 @@
 			flex-wrap: wrap;
 
 			:global(img) {
+				margin-bottom: var(--space-standard);
 				display: inline-block;
 				vertical-align: top;
 
