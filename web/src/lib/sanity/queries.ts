@@ -29,3 +29,19 @@ export type WorkCategory = {
 		images: SanityImage[];
 	};
 };
+
+/**
+ * Collection
+ */
+
+export const collectionQuery = groq`
+  *[_type == 'collection' && slug.current == $slug][0]{
+    images,
+    title
+  }
+`;
+
+export type CollectionQuery = {
+	images: SanityImage[];
+	title: string;
+};
