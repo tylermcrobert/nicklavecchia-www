@@ -16,5 +16,5 @@
 	});
 </script>
 
-<Nav activeSlug="root" />
+<Nav />
 <slot />

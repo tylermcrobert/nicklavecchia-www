@@ -1,21 +1,19 @@
 <script lang="ts">
-	type Slug = 'root' | 'about' | 'fine-art';
+	import { page } from '$app/stores';
 
-	export let activeSlug: Slug;
-
-	const routes: { display: string; href: string; slug: Slug }[] = [
-		{ display: 'Portfolio', href: '/', slug: 'root' },
-		{ display: 'About', href: '/about', slug: 'about' },
-		{ display: 'Fine Art', href: '/products', slug: 'fine-art' }
+	const routes = [
+		{ display: 'Portfolio', href: '/' },
+		{ display: 'About', href: '/about' },
+		{ display: 'Fine Art', href: '/products' }
 	];
 </script>
 
 <nav class="nav">
 	<div class="logo"><a href="/">Nick Lavecchia</a></div>
 	<ul class="links">
-		{#each routes as { slug, display, href }}
+		{#each routes as { display, href }}
 			<li>
-				<a {href} class:underline={slug === activeSlug}>
+				<a {href} class:underline={href === $page.route.id}>
 					{display}
 				</a>
 			</li>
