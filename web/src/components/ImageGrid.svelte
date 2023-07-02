@@ -3,18 +3,26 @@
 	import type { SanityImage } from './ResponsiveImage/types';
 
 	type ImageGridItem = {
-		image: SanityImage;
+		image: SanityImage | null;
+		imageSrc?: string;
 		title: string | null;
-		slug: string | null;
+		href: string | null;
 	};
 
 	export let items: ImageGridItem[];
+	export let type: 'inline' | 'grid' = 'inline';
 </script>
 
-<div class="imageGrid">
-	{#each items as { slug, image, title }}
-		<a href={`/collection/${slug}`}>
-			<ResponsiveImage {image} sizes="100px" alt="Nick Lavecchia" />
+<div class={`imageGrid ${type}`}>
+	{#each items as { href, image, title, imageSrc }}
+		<a {href} class="gridItem">
+			{#if image}
+				<ResponsiveImage {image} sizes="100px" alt="Nick Lavecchia" />
+			{:else if imageSrc}
+				<img src={imageSrc} alt="Nick Lavecchia" />
+			{/if}
+
+			<!-- asdf -->
 			{#if title}
 				<div>{title}</div>
 			{/if}
@@ -24,17 +32,29 @@
 
 <style lang="scss">
 	.imageGrid {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--space-standard);
+		gap: var(--space-large) var(--space-standard);
 		padding: var(--space-standard);
 
 		:global(img) {
-			display: inline-block;
-			vertical-align: top;
+			margin-bottom: var(--space-standard);
+		}
 
-			height: 100px;
-			width: auto;
+		&.grid {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		&.inline {
+			display: flex;
+			flex-wrap: wrap;
+
+			:global(img) {
+				display: inline-block;
+				vertical-align: top;
+
+				height: 100px;
+				width: auto;
+			}
 		}
 	}
 </style>
