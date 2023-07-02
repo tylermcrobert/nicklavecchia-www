@@ -3,5 +3,5 @@
 	import '../styles/globals.scss';
 </script>
 
-<Nav />
+<Nav activeSlug="root" />
 <slot />

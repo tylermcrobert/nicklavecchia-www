@@ -1,9 +1,25 @@
+<script lang="ts">
+	type Slug = 'root' | 'about' | 'fine-art';
+
+	export let activeSlug: Slug;
+
+	const routes: { display: string; href: string; slug: Slug }[] = [
+		{ display: 'Portfolio', href: '/', slug: 'root' },
+		{ display: 'About', href: 'about', slug: 'about' },
+		{ display: 'Fine Art', href: 'products', slug: 'fine-art' }
+	];
+</script>
+
 <nav class="nav">
 	<div class="logo"><a href="/">Nick Lavecchia</a></div>
 	<ul class="links">
-		<li>Portfolio</li>
-		<li><a href="/about">About</a></li>
-		<li>Fine Art</li>
+		{#each routes as { slug, display, href }}
+			<li>
+				<a {href} class:underline={slug === activeSlug}>
+					{display}
+				</a>
+			</li>
+		{/each}
 	</ul>
 </nav>
 
