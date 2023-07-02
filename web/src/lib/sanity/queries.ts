@@ -1,4 +1,5 @@
 import groq from 'groq';
+import type { SanityImage } from '../../components/ResponsiveImage/types';
 
 export const siteQuery = groq`
   *[_type  == 'site'][0]{
@@ -14,5 +15,3 @@ export const siteQuery = groq`
 export type SiteQuery = {
 	overview: SanityImage[];
 };
-
-export type SanityImage = { _type: 'image' };
