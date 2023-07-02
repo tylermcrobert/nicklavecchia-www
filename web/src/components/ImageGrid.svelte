@@ -2,14 +2,22 @@
 	import { ResponsiveImage } from '../components';
 	import type { SanityImage } from './ResponsiveImage/types';
 
-	export let items: SanityImage[];
-	export let collectionSlug: string;
+	type ImageGridItem = {
+		image: SanityImage;
+		title: string | null;
+		slug: string | null;
+	};
+
+	export let items: ImageGridItem[];
 </script>
 
 <div class="imageGrid">
-	{#each items as item}
-		<a href={`/collection/${collectionSlug}`}>
-			<ResponsiveImage image={item} sizes="100px" alt="Nick Lavecchia" />
+	{#each items as { slug, image, title }}
+		<a href={`/collection/${slug}`}>
+			<ResponsiveImage {image} sizes="100px" alt="Nick Lavecchia" />
+			{#if title}
+				<div>{title}</div>
+			{/if}
 		</a>
 	{/each}
 </div>

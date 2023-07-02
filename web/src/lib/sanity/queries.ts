@@ -8,9 +8,10 @@ export const siteQuery = groq`
       'slug': slug.current,
       title,
       'projects': collections[]-> {
+        "slug": slug.current,
+        title,
         featured,
         images,
-        "slug": slug.current,
       }
     }
   }
@@ -27,7 +28,9 @@ export type WorkCategory = {
 	projects: {
 		featured: SanityImage;
 		images: SanityImage[];
-	};
+		slug: string;
+		title: string;
+	}[];
 };
 
 /**

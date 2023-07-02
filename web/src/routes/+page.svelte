@@ -13,4 +13,10 @@
 	{/each}
 </ul>
 
-<ImageGrid items={data.overview} collectionSlug="overview" />
+<ImageGrid
+	items={data.overview.map((item) => ({
+		image: item,
+		title: null,
+		slug: 'overview'
+	}))}
+/>
