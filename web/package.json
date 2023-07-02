@@ -32,7 +32,9 @@
 		"@sanity/client": "^6.1.5",
 		"@sanity/image-url": "^1.0.2",
 		"@studio-freight/lenis": "^1.0.16",
+		"@types/shopify-buy": "^2.17.1",
 		"groq": "^3.14.1",
-		"sass": "^1.63.6"
+		"sass": "^1.63.6",
+		"shopify-buy": "^2.19.0"
 	}
 }

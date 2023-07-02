@@ -348,6 +348,11 @@
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.5.0.tgz#591c1ce3a702c45ee15f47a42ade72c2fd78978a"
   integrity sha512-G8hZ6XJiHnuhQKR7ZmysCeJWE08o8T0AXtk5darsCaTVsYZhhgUrq53jizaR2FvsoeCwJhlmwTjkXBY5Pn/ZHw==
 
+"@types/shopify-buy@^2.17.1":
+  version "2.17.1"
+  resolved "https://registry.yarnpkg.com/@types/shopify-buy/-/shopify-buy-2.17.1.tgz#c2f1a94d615ca83d1127135a098bd73cda57939c"
+  integrity sha512-R/LzVK/Beqsex2dccSY2rfm4AFAVuqJ177LVl18bVNtxQO78WGTgsVZKDEOaugW9ap3hm+w2XvGFBFp3XeMRvw==
+
 "@typescript-eslint/eslint-plugin@^5.45.0":
   version "5.60.1"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-5.60.1.tgz#81382d6ecb92b8dda70e91f9035611cb2fecd1c3"
@@ -1598,6 +1603,11 @@ shebang-regex@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
+
+shopify-buy@^2.19.0:
+  version "2.19.0"
+  resolved "https://registry.yarnpkg.com/shopify-buy/-/shopify-buy-2.19.0.tgz#5c1e0f9fd0fb91266f467c7a8fca1ec7100d983a"
+  integrity sha512-XCkQDG9DokhWUiRTOh+6K9I2w3uMys+R1mCt8h3l4le/9TjVxVJ1jbWD7ioyPf1Bc+fPLR6KX62JT1K6NE/S8A==
 
 sirv@^2.0.2:
   version "2.0.3"
