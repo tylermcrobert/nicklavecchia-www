@@ -5,8 +5,8 @@
 
 	const routes: { display: string; href: string; slug: Slug }[] = [
 		{ display: 'Portfolio', href: '/', slug: 'root' },
-		{ display: 'About', href: 'about', slug: 'about' },
-		{ display: 'Fine Art', href: 'products', slug: 'fine-art' }
+		{ display: 'About', href: '/about', slug: 'about' },
+		{ display: 'Fine Art', href: '/products', slug: 'fine-art' }
 	];
 </script>
 
