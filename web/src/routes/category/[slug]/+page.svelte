@@ -9,6 +9,6 @@
 	items={data.projects.map((item) => ({
 		image: item.featured,
 		title: item.title,
-		slug: item.slug
+		href: `/collection/${item.slug}`
 	}))}
 />
