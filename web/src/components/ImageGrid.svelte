@@ -1,5 +1,17 @@
+<script lang="ts">
+	import { ResponsiveImage } from '../components';
+	import type { SanityImage } from './ResponsiveImage/types';
+
+	export let items: SanityImage[];
+	export let collectionSlug: string;
+</script>
+
 <div class="imageGrid">
-	<slot />
+	{#each items as item}
+		<a href={`/collection/${collectionSlug}`}>
+			<ResponsiveImage image={item} sizes="100px" alt="Nick Lavecchia" />
+		</a>
+	{/each}
 </div>
 
 <style lang="scss">

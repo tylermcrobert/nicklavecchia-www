@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { SiteQuery } from '$lib/sanity/queries';
-	import { ImageGrid, ResponsiveImage } from '../components';
+	import { ImageGrid } from '../components';
 
 	export let data: SiteQuery;
 </script>
@@ -13,8 +13,4 @@
 	{/each}
 </ul>
 
-<ImageGrid>
-	{#each data.overview as item}
-		<ResponsiveImage image={item} sizes="100px" alt="Nick Lavecchia" />
-	{/each}
-</ImageGrid>
+<ImageGrid items={data.overview} collectionSlug="overview" />
