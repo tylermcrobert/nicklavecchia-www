@@ -1,9 +1,17 @@
 @import 'reset.scss';
+@import 'vars.scss';
 
 * {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	box-sizing: border-box;
+}
+
+body {
+	font-size: 14px;
+	text-transform: uppercase;
+	font-family: sans-serif;
+	letter-spacing: 0.02em;
 }
 
 img,
