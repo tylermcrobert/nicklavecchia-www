@@ -17,6 +17,6 @@
 	items={data.overview.map((item) => ({
 		image: item,
 		title: null,
-		slug: 'overview'
+		href: '/collection/overview'
 	}))}
 />
