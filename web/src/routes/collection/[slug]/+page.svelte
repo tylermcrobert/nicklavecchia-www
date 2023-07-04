@@ -10,7 +10,7 @@
 
 <div class="images">
 	{#each data.images as image}
-		<ResponsiveImage {image} sizes="50vh" alt="Nick Lavecchia" />
+		<ResponsiveImage {image} sizes="50vh" alt="Nick LaVecchia" />
 	{/each}
 </div>
 

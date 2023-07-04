@@ -17,9 +17,9 @@
 	{#each items as { href, image, title, imageSrc }}
 		<a {href} class="gridItem">
 			{#if image}
-				<ResponsiveImage {image} sizes="100px" alt="Nick Lavecchia" />
+				<ResponsiveImage {image} sizes="100px" alt="Nick LaVecchia" />
 			{:else if imageSrc}
-				<img src={imageSrc} alt="Nick Lavecchia" />
+				<img src={imageSrc} alt="Nick LaVecchia" />
 			{/if}
 
 			<!-- asdf -->

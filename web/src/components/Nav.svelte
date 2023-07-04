@@ -10,7 +10,7 @@
 </script>
 
 <nav class="nav">
-	<div class="logo"><a href="/">Nick Lavecchia</a></div>
+	<div class="logo"><a href="/">Nick LaVecchia</a></div>
 
 	<div class="secondary">
 		{#if $navStore.items}
