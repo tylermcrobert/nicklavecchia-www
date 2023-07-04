@@ -17,7 +17,7 @@
 	{#each items as { href, image, title, imageSrc }}
 		<a {href} class="gridItem">
 			{#if image}
-				<ResponsiveImage {image} sizes="100px" alt="Nick LaVecchia" />
+				<ResponsiveImage {image} sizes="10vw" alt="Nick LaVecchia" />
 			{:else if imageSrc}
 				<img src={imageSrc} alt="Nick LaVecchia" />
 			{/if}
@@ -54,7 +54,7 @@
 				display: inline-block;
 				vertical-align: top;
 
-				height: 100px;
+				height: 10vw;
 				width: auto;
 			}
 		}
