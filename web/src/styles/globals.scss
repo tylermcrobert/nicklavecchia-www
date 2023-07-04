@@ -12,7 +12,8 @@ html,
 body {
 	font-size: 13.5px;
 	text-transform: uppercase;
-	font-family: 'Basis', helvetica, sans-serif;
+	font-family: 'Basis', -apple-system, BlinkMacSystemFont, helvetica neue,
+		helvetica sans-serif;
 	font-weight: 500;
 	letter-spacing: 0.03em;
 	color: #282e3c;
@@ -24,7 +25,27 @@ video {
 	width: 100%;
 }
 
+a,
+button {
+	cursor: pointer;
+}
+
 .underline {
 	text-decoration: underline;
 	text-underline-offset: 4px;
+	text-decoration-thickness: 1px;
+}
+
+.text-large {
+	font-size: 16px;
+	text-transform: initial;
+}
+
+.text-para {
+	text-transform: initial;
+	line-height: 1.5;
+
+	p {
+		margin-bottom: 1em;
+	}
 }
