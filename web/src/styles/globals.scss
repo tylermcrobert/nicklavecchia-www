@@ -17,6 +17,10 @@ body {
 	font-weight: 500;
 	letter-spacing: 0.03em;
 	color: #282e3c;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
 }
 
 img,
