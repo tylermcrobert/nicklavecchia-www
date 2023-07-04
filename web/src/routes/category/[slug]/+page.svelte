@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { SiteQuery, WorkCategory } from '$lib/sanity/queries';
 	import { setCategories } from '$lib/stores';
-	import ImageGrid from '../../../components/ImageGrid.svelte';
+	import ImageGrid from '$components/ImageGrid.svelte';
 
 	export let data: { categoryData: WorkCategory; siteData: SiteQuery };
 

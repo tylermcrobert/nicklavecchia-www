@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { Nav } from '../components';
+	import { Nav } from '$components';
 	import '../styles/globals.scss';
 	import Lenis from '@studio-freight/lenis';
 

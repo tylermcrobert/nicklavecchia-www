@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ResponsiveImage } from '../components';
+	import { ResponsiveImage } from '$components';
 	import type { SanityImage } from './ResponsiveImage/types';
 
 	type ImageGridItem = {
