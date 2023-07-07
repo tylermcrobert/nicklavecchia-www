@@ -41,13 +41,19 @@
 
 <style>
 	.nav {
-		padding: var(--space-standard);
-		position: sticky;
+		position: fixed;
 		top: 0;
+		z-index: 200;
+
+		width: 100%;
+		height: var(--nav-height);
+		padding: 0 var(--space-standard);
+
 		background: white;
 
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 	}
 
 	.logo {
