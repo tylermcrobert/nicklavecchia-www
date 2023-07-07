@@ -1,8 +1,14 @@
 <script lang="ts">
 	import { navigating } from '$app/stores';
 	import gsap, { Power3 } from 'gsap';
+	import { onMount } from 'svelte';
+	import Lenis from '@studio-freight/lenis';
 
 	export let refresh: string;
+
+	let wrapper: HTMLElement;
+	let content: HTMLElement;
+	let lenis: Lenis;
 
 	const modalRoutes = ['/fine-art/[slug]', '/collection/[slug]'];
 
@@ -63,11 +69,36 @@
 
 		return { duration: 1400 };
 	}
+
+	/**
+	 * Smooth scroll
+	 */
+
+	onMount(() => {
+		lenis = new Lenis({ wrapper, content });
+
+		function raf(time: number) {
+			lenis.raf(time);
+			requestAnimationFrame(raf);
+		}
+
+		requestAnimationFrame(raf);
+	});
+
+	function handleNewNode() {
+		lenis = new Lenis({ wrapper, content });
+	}
 </script>
 
 {#key refresh}
-	<div in:animateIn out:animateOut class="animate">
-		<div class="inner">
+	<div
+		in:animateIn
+		out:animateOut
+		class="animate"
+		bind:this={wrapper}
+		on:introstart={handleNewNode}
+	>
+		<div bind:this={content}>
 			<slot />
 		</div>
 	</div>

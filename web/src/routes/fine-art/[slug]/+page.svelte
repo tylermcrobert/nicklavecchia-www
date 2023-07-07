@@ -52,7 +52,6 @@
 <style type="scss">
 	.wrapper {
 		margin: 0 auto;
-		margin-top: var(--space-large);
 
 		display: flex;
 		flex-direction: row-reverse;
@@ -60,6 +59,7 @@
 		/* TODO - make indent width at large size  */
 		gap: 10%;
 		padding: 0 10%;
+		padding-top: var(--space-large);
 	}
 
 	.info {
