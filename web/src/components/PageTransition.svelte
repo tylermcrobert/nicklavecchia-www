@@ -86,10 +86,6 @@
 
 		background: white;
 		overflow-y: scroll;
-
-		/* transform: scale(0.5); */
-
-		border: 1px solid blue;
 	}
 
 	/* .curtain {
