@@ -22,7 +22,6 @@
 				<img src={imageSrc} alt="Nick LaVecchia" />
 			{/if}
 
-			<!-- asdf -->
 			{#if title}
 				<div>{title}</div>
 			{/if}
