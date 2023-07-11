@@ -3,6 +3,7 @@
 	import gsap, { Power3 } from 'gsap';
 	import { onMount } from 'svelte';
 	import Lenis from '@studio-freight/lenis';
+	import { MODAL_ROUTES } from '../constants';
 
 	export let refresh: string;
 
@@ -10,13 +11,11 @@
 	let content: HTMLElement;
 	let lenis: Lenis;
 
-	const modalRoutes = ['/fine-art/[slug]', '/collection/[slug]'];
-
 	$: navigatingTo = $navigating?.to?.route.id || '';
 	$: navigatingFrom = $navigating?.from?.route.id || '';
 
-	$: toModal = modalRoutes.includes(navigatingTo);
-	$: fromModal = modalRoutes.includes(navigatingFrom);
+	$: toModal = MODAL_ROUTES.includes(navigatingTo);
+	$: fromModal = MODAL_ROUTES.includes(navigatingFrom);
 	$: lateral = !fromModal && !toModal;
 
 	function animateOut(node: HTMLElement) {
