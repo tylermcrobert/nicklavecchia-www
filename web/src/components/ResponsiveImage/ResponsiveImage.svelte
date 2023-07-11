@@ -69,7 +69,7 @@
 		opacity: 0;
 		object-fit: cover;
 		background-color: var(--color-img-preload-background);
-		transition: opacity 200ms ease-out;
+		transition: opacity 200ms ease-in;
 	}
 
 	.loaded {
