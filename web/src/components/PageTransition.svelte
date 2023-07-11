@@ -123,14 +123,15 @@
 <style lang="scss">
 	.animate {
 		position: fixed;
-		top: var(--nav-height);
 		left: 0;
 
 		width: 100vw;
-		height: calc(100vh - var(--nav-height));
+		height: 100vh;
 
 		background: white;
 		overflow-y: scroll;
+
+		padding-top: var(--nav-height);
 
 		&::-webkit-scrollbar {
 			display: none;

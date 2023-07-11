@@ -91,8 +91,6 @@
 		height: var(--nav-height);
 		padding: 0 var(--space-standard);
 
-		background: white;
-
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
