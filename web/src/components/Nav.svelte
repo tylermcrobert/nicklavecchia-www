@@ -29,10 +29,8 @@
 	}
 
 	function animateIn(node: HTMLElement) {
-		const tl = gsap.timeline();
-
-		tl.set(node, { display: 'none', opacity: 0 });
-		tl.to(node, {
+		gsap.set(node, { display: 'none', opacity: 0 });
+		gsap.to(node, {
 			delay: 0.45,
 			duration: 0.8,
 			// Todo: Unset property maybe?
