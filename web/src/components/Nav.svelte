@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { gsap, Power3 } from 'gsap';
-	import { fade } from 'svelte/transition';
-
 	import { navigating, page } from '$app/stores';
 	import { navStore } from '$lib/stores';
 	import { DLY_FADE, DUR_FADE, DUR_MODAL, MODAL_ROUTES } from '../constants';
