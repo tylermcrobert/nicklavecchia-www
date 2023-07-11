@@ -1,13 +1,11 @@
 <script lang="ts">
-	import { Nav } from '$components';
+	import { PageTransition, Nav } from '$components';
 	import '../styles/globals.scss';
 
-	import { PageTransition } from '$components';
-
-	export let data: { pathname: string };
+	export let data;
 </script>
 
-<Nav />
+<Nav refresh={data.navRefresh} />
 
 <PageTransition refresh={data.pathname}>
 	<slot />
