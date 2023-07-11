@@ -120,7 +120,7 @@
 
 <div class="curtain" bind:this={curtain} />
 
-<style>
+<style lang="scss">
 	.animate {
 		position: fixed;
 		top: var(--nav-height);
@@ -131,6 +131,10 @@
 
 		background: white;
 		overflow-y: scroll;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
 	}
 
 	.curtain {
