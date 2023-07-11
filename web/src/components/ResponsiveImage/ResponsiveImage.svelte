@@ -3,6 +3,7 @@
 	import { IMG_DEVICE_SIZES } from './sizes';
 	import type { SanityImage } from './types';
 	import getImageDimensions from './getImageDimensions';
+	import { onMount } from 'svelte';
 
 	/**
 	 * Halfway through standard and retna
@@ -16,6 +17,9 @@
 	export let sizes: string;
 	export let quality = 75;
 	export let color: string | undefined = undefined;
+
+	let node: HTMLImageElement;
+	let loaded = false;
 
 	$: naturalAspect = getImageDimensions(image).aspectRatio;
 	$: enforcedAspect = aspect; // rename to be more clear
@@ -44,20 +48,31 @@
 		styles.push(`aspect-ratio: ${enforcedAspect || naturalAspect}`);
 		return styles.join('; ');
 	};
+
+	onMount(() => (loaded = node.complete && node.naturalHeight !== 0));
 </script>
 
 <img
-	class="responsiveImage"
 	src={urlFor(image).url()}
 	{alt}
 	{sizes}
 	{srcset}
 	style={getStyle()}
+	class="responsiveImage"
+	class:loaded
+	bind:this={node}
+	on:load={() => (loaded = true)}
 />
 
 <style>
 	.responsiveImage {
+		opacity: 0;
 		object-fit: cover;
 		background-color: var(--color-img-preload-background);
+		transition: opacity 200ms ease-out;
+	}
+
+	.loaded {
+		opacity: 1;
 	}
 </style>
