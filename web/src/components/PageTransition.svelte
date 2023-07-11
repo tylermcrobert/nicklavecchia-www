@@ -6,25 +6,20 @@
 	import {
 		DLY_MODAL,
 		DUR_MODAL,
-		MODAL_ROUTES,
 		DLY_CURTAIN_OUT,
 		DUR_FADE,
 		DLY_FADE
 	} from '../constants';
+	import { navType } from '$lib/util/navType';
 
 	export let refresh: string;
+
+	$: ({ toModal, fromModal, lateral } = navType($navigating));
 
 	let wrapper: HTMLElement;
 	let content: HTMLElement;
 	let curtain: HTMLElement;
 	let lenis: Lenis;
-
-	$: navigatingTo = $navigating?.to?.route.id || '';
-	$: navigatingFrom = $navigating?.from?.route.id || '';
-
-	$: toModal = MODAL_ROUTES.includes(navigatingTo);
-	$: fromModal = MODAL_ROUTES.includes(navigatingFrom);
-	$: lateral = !fromModal && !toModal;
 
 	function animateOut(node: HTMLElement) {
 		if (fromModal) {
