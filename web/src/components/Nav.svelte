@@ -4,6 +4,7 @@
 	import { navStore } from '$lib/stores';
 	import { DLY_FADE, DUR_FADE, DUR_MODAL, MODAL_ROUTES } from '../constants';
 	import { navType } from '$lib/util/navType';
+	import { afterNavigate } from '$app/navigation';
 
 	const ROUTES = [
 		{ display: 'Portfolio', href: '/' },
@@ -15,6 +16,12 @@
 
 	$: isModal = MODAL_ROUTES.includes($page.route.id || '');
 	$: ({ lateral } = navType($navigating));
+
+	let prevRoute: string | null = '/';
+
+	afterNavigate((nav) => {
+		prevRoute = nav.from?.url.pathname || '/';
+	});
 
 	function animateOut(node: HTMLElement) {
 		const tl = gsap.timeline();
@@ -45,7 +52,7 @@
 </script>
 
 <nav class="nav">
-	<div class="logo"><a href="/">Nick LaVecchia</a></div>
+	<div class="logo"><a href={isModal ? prevRoute : '/'}>Nick LaVecchia</a></div>
 
 	{#key refresh}
 		<div class="secondary" in:animateIn out:animateOut>
@@ -76,7 +83,7 @@
 			{/each}
 		</ul>
 	{:else}
-		<div in:animateIn out:animateOut>Close</div>
+		<a in:animateIn out:animateOut href={prevRoute}>✕ Close</a>
 	{/if}
 </nav>
 
