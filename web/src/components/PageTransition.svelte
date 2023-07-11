@@ -3,7 +3,14 @@
 	import gsap, { Power3 } from 'gsap';
 	import { onMount } from 'svelte';
 	import Lenis from '@studio-freight/lenis';
-	import { MODAL_ROUTES } from '../constants';
+	import {
+		DLY_MODAL,
+		DUR_MODAL,
+		MODAL_ROUTES,
+		DLY_CURTAIN_OUT,
+		DUR_FADE,
+		DLY_FADE
+	} from '../constants';
 
 	export let refresh: string;
 
@@ -25,26 +32,26 @@
 			gsap.set(node, { y: '0', zIndex: 100 });
 
 			gsap.to(node, {
-				y: '100vh',
-				delay: 0.4,
-				duration: 1,
-				ease: Power3.easeInOut
+				delay: DLY_MODAL,
+				duration: DUR_MODAL,
+				ease: Power3.easeInOut,
+				y: '100vh'
 			});
 
 			gsap.to(curtain, {
-				delay: 0.8,
-				opacity: 0,
-				duration: 1,
-				ease: Power3.easeInOut
+				duration: DUR_MODAL,
+				delay: DLY_CURTAIN_OUT,
+				ease: Power3.easeInOut,
+				opacity: 0
 			});
 		}
 
 		if (lateral) {
 			gsap.set(node, { opacity: 1 });
 			gsap.to(node, {
-				opacity: 0,
-				duration: 0.8,
-				ease: Power3.easeOut
+				duration: DUR_FADE,
+				ease: Power3.easeOut,
+				opacity: 0
 			});
 		}
 
@@ -57,26 +64,26 @@
 			gsap.set(node, { y: '100vh', zIndex: 100 });
 
 			gsap.to(node, {
-				y: '0vh',
-				delay: 0.4,
-				duration: 1,
-				ease: Power3.easeInOut
+				delay: DLY_MODAL,
+				duration: DUR_MODAL,
+				ease: Power3.easeInOut,
+				y: '0vh'
 			});
 
 			gsap.to(curtain, {
+				duration: DUR_MODAL,
 				delay: 0,
-				opacity: 1,
-				duration: 1,
-				ease: Power3.easeInOut
+				ease: Power3.easeInOut,
+				opacity: 1
 			});
 		}
 
 		if (lateral) {
 			gsap.set(node, { opacity: 0 });
 			gsap.to(node, {
+				duration: DUR_FADE,
+				delay: DLY_FADE,
 				opacity: 1,
-				delay: 0.4,
-				duration: 0.8,
 				ease: Power3.easeIn
 			});
 		}

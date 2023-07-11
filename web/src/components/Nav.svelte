@@ -3,7 +3,7 @@
 	import { navStore } from '$lib/stores';
 	import { gsap, Power3 } from 'gsap';
 	import { fade } from 'svelte/transition';
-	import { MODAL_ROUTES } from '../constants';
+	import { DLY_FADE, DUR_FADE, MODAL_ROUTES } from '../constants';
 
 	const ROUTES = [
 		{ display: 'Portfolio', href: '/' },
@@ -20,26 +20,27 @@
 
 		tl.to(node, {
 			opacity: 0,
-			duration: 0.8,
+			duration: DUR_FADE,
 			ease: Power3.easeOut
 		});
+
 		tl.set(node, { display: 'none' });
 
-		return { duration: 800 };
+		return { duration: DUR_FADE * 1000 };
 	}
 
 	function animateIn(node: HTMLElement) {
 		gsap.set(node, { display: 'none', opacity: 0 });
 		gsap.to(node, {
-			delay: 0.45,
-			duration: 0.8,
+			delay: DLY_FADE + 0.1, // add a .1s to avoid flashes
+			duration: DUR_FADE,
 			// Todo: Unset property maybe?
 			display: 'flex',
 			opacity: 1,
 			ease: Power3.easeIn
 		});
 
-		return { duration: 1200 };
+		return { duration: DLY_FADE + DUR_FADE * 1000 };
 	}
 </script>
 
