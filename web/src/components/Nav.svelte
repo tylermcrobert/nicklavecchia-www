@@ -109,5 +109,9 @@
 	.links {
 		display: flex;
 		gap: var(--space-standard);
+
+		/* Fix bugs with underlines flashing */
+		position: relative;
+		transform: translate3d(0, 0, 0);
 	}
 </style>
