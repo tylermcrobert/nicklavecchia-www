@@ -9,6 +9,7 @@
 
 	let wrapper: HTMLElement;
 	let content: HTMLElement;
+	let curtain: HTMLElement;
 	let lenis: Lenis;
 
 	$: navigatingTo = $navigating?.to?.route.id || '';
@@ -19,21 +20,28 @@
 	$: lateral = !fromModal && !toModal;
 
 	function animateOut(node: HTMLElement) {
-		const tl = gsap.timeline();
-
 		if (fromModal) {
-			tl.set(node, { y: '0', zIndex: 100 });
-			tl.to(node, {
+			gsap.set(curtain, { opacity: 1 });
+			gsap.set(node, { y: '0', zIndex: 100 });
+
+			gsap.to(node, {
 				y: '100vh',
 				delay: 0.4,
+				duration: 1,
+				ease: Power3.easeInOut
+			});
+
+			gsap.to(curtain, {
+				delay: 0.8,
+				opacity: 0,
 				duration: 1,
 				ease: Power3.easeInOut
 			});
 		}
 
 		if (lateral) {
-			tl.set(node, { opacity: 1 });
-			tl.to(node, {
+			gsap.set(node, { opacity: 1 });
+			gsap.to(node, {
 				opacity: 0,
 				duration: 0.8,
 				ease: Power3.easeOut
@@ -44,21 +52,28 @@
 	}
 
 	function animateIn(node: HTMLElement) {
-		const tl = gsap.timeline();
-
 		if (toModal) {
-			tl.set(node, { y: '100vh', zIndex: 100 });
-			tl.to(node, {
+			gsap.set(curtain, { opacity: 0 });
+			gsap.set(node, { y: '100vh', zIndex: 100 });
+
+			gsap.to(node, {
 				y: '0vh',
 				delay: 0.4,
+				duration: 1,
+				ease: Power3.easeInOut
+			});
+
+			gsap.to(curtain, {
+				delay: 0,
+				opacity: 1,
 				duration: 1,
 				ease: Power3.easeInOut
 			});
 		}
 
 		if (lateral) {
-			tl.set(node, { opacity: 0 });
-			tl.to(node, {
+			gsap.set(node, { opacity: 0 });
+			gsap.to(node, {
 				opacity: 1,
 				delay: 0.4,
 				duration: 0.8,
@@ -103,7 +118,7 @@
 	</div>
 {/key}
 
-<!-- <div class="curtain" /> -->
+<div class="curtain" bind:this={curtain} />
 
 <style>
 	.animate {
@@ -118,15 +133,16 @@
 		overflow-y: scroll;
 	}
 
-	/* .curtain {
+	.curtain {
 		position: fixed;
 		top: 0;
 		left: 0;
 		width: 100vw;
 		height: 100vh;
+		opacity: 0;
 
 		background: rgba(0, 0, 0, 0.3);
 		pointer-events: none;
 		z-index: 10;
-	} */
+	}
 </style>
