@@ -1,9 +1,11 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { navStore } from '$lib/stores';
 	import { gsap, Power3 } from 'gsap';
 	import { fade } from 'svelte/transition';
-	import { DLY_FADE, DUR_FADE, MODAL_ROUTES } from '../constants';
+
+	import { navigating, page } from '$app/stores';
+	import { navStore } from '$lib/stores';
+	import { DLY_FADE, DUR_FADE, DUR_MODAL, MODAL_ROUTES } from '../constants';
+	import { navType } from '$lib/util/navType';
 
 	const ROUTES = [
 		{ display: 'Portfolio', href: '/' },
@@ -14,6 +16,7 @@
 	export let refresh: string;
 
 	$: isModal = MODAL_ROUTES.includes($page.route.id || '');
+	$: ({ lateral } = navType($navigating));
 
 	function animateOut(node: HTMLElement) {
 		const tl = gsap.timeline();
@@ -32,9 +35,8 @@
 	function animateIn(node: HTMLElement) {
 		gsap.set(node, { display: 'none', opacity: 0 });
 		gsap.to(node, {
-			delay: DLY_FADE + 0.1, // add a .1s to avoid flashes
+			delay: lateral ? DLY_FADE + 0.1 : DUR_MODAL, // add a .1s to avoid flashes
 			duration: DUR_FADE,
-			// Todo: Unset property maybe?
 			display: 'flex',
 			opacity: 1,
 			ease: Power3.easeIn
