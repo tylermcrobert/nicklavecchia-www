@@ -52,7 +52,7 @@
 	{#key refresh}
 		<div class="secondary" in:animateIn out:animateOut>
 			{#if $navStore.items}
-				<ul class="links" out:fade in:fade>
+				<ul class="links">
 					{#each $navStore.items as { href, name }}
 						<li>
 							<a {href} class:underline={href === $page.url.pathname}>{name}</a>
