@@ -27,6 +27,7 @@
 		const tl = gsap.timeline();
 
 		tl.to(node, {
+			delay: lateral ? 0 : DLY_FADE,
 			opacity: 0,
 			duration: DUR_FADE,
 			ease: Power3.easeOut
