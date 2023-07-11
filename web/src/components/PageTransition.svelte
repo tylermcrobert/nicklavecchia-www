@@ -119,7 +119,7 @@
 		bind:this={wrapper}
 		on:introstart={handleNewNode}
 	>
-		<div bind:this={content}>
+		<div bind:this={content} class="content">
 			<slot />
 		</div>
 	</div>
@@ -138,11 +138,13 @@
 		background: white;
 		overflow-y: scroll;
 
-		padding-top: var(--nav-height);
-
 		&::-webkit-scrollbar {
 			display: none;
 		}
+	}
+
+	.content {
+		padding-top: var(--nav-height);
 	}
 
 	.curtain {
