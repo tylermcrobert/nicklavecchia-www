@@ -3,14 +3,17 @@
 	import { navStore } from '$lib/stores';
 	import { gsap, Power3 } from 'gsap';
 	import { fade } from 'svelte/transition';
+	import { MODAL_ROUTES } from '../constants';
 
-	export let refresh: string;
-
-	const routes = [
+	const ROUTES = [
 		{ display: 'Portfolio', href: '/' },
 		{ display: 'About', href: '/about' },
 		{ display: 'Fine Art', href: '/fine-art' }
 	];
+
+	export let refresh: string;
+
+	$: isModal = MODAL_ROUTES.includes($page.route.id || '');
 
 	function animateOut(node: HTMLElement) {
 		const tl = gsap.timeline();
@@ -63,15 +66,19 @@
 		</div>
 	{/key}
 
-	<ul class="links">
-		{#each routes as { display, href }}
-			<li>
-				<a {href} class:underline={href === $page.route.id}>
-					{display}
-				</a>
-			</li>
-		{/each}
-	</ul>
+	{#if !isModal}
+		<ul class="links" in:animateIn out:animateOut>
+			{#each ROUTES as { display, href }}
+				<li>
+					<a {href} class:underline={href === $page.route.id}>
+						{display}
+					</a>
+				</li>
+			{/each}
+		</ul>
+	{:else}
+		<div in:animateIn out:animateOut>Close</div>
+	{/if}
 </nav>
 
 <style>
