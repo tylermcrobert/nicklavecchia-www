@@ -5,5 +5,5 @@ export const DLY_MODAL = 0.4;
 
 export const DLY_CURTAIN_OUT = 0.8;
 
-export const DUR_FADE = 0.7;
-export const DLY_FADE = 0.3;
+export const DUR_FADE = 0.6;
+export const DLY_FADE = 0.4;
