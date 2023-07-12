@@ -60,6 +60,7 @@
 	style={getStyle()}
 	class="responsiveImage"
 	class:loaded
+	loading="lazy"
 	bind:this={node}
 	on:load={() => (loaded = true)}
 />
