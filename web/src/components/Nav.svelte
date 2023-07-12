@@ -16,10 +16,10 @@
 	/** When to refresh navigation animations */
 	export let refresh: string;
 
-	// Changes home button destination on mobile
+	// Use standard or modal nav layout
 	$: isModal = MODAL_ROUTES.includes($page.route.id || '');
 
-	/** Change delay based on */
+	/** Change delay based on navigation type */
 	$: ({ lateral } = getNavigatingType($navigating));
 
 	/** This is for back button*/
