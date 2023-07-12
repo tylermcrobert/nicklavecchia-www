@@ -22,6 +22,15 @@
 	let lenis: Lenis;
 
 	function animateOut(node: HTMLElement) {
+		if (lateral) {
+			gsap.set(node, { opacity: 1 });
+			gsap.to(node, {
+				duration: DUR_FADE,
+				ease: Power3.easeOut,
+				opacity: 0
+			});
+		}
+
 		if (fromModal) {
 			gsap.set(curtain, { opacity: 1 });
 			gsap.set(node, { y: '0', zIndex: 'var(--z-main-above-curtain)' });
@@ -41,19 +50,20 @@
 			});
 		}
 
-		if (lateral) {
-			gsap.set(node, { opacity: 1 });
-			gsap.to(node, {
-				duration: DUR_FADE,
-				ease: Power3.easeOut,
-				opacity: 0
-			});
-		}
-
 		return { duration: 1400 };
 	}
 
 	function animateIn(node: HTMLElement) {
+		if (lateral) {
+			gsap.set(node, { opacity: 0 });
+			gsap.to(node, {
+				duration: DUR_FADE,
+				delay: DLY_FADE,
+				opacity: 1,
+				ease: Power3.easeIn
+			});
+		}
+
 		if (toModal) {
 			gsap.set(curtain, { opacity: 0 });
 			gsap.set(node, { y: '100vh', zIndex: 'var(--z-main-above-curtain)' });
@@ -70,16 +80,6 @@
 				delay: 0,
 				ease: Power3.easeInOut,
 				opacity: 1
-			});
-		}
-
-		if (lateral) {
-			gsap.set(node, { opacity: 0 });
-			gsap.to(node, {
-				duration: DUR_FADE,
-				delay: DLY_FADE,
-				opacity: 1,
-				ease: Power3.easeIn
 			});
 		}
 
