@@ -23,7 +23,6 @@
 
 	function animateOut(node: HTMLElement) {
 		if (lateral) {
-			gsap.set(node, { opacity: 1 });
 			gsap.to(node, {
 				duration: DUR_FADE,
 				ease: Power3.easeOut,
@@ -32,7 +31,6 @@
 		}
 
 		if (fromModal) {
-			gsap.set(curtain, { opacity: 1 });
 			gsap.set(node, { y: '0', zIndex: 'var(--z-main-above-curtain)' });
 
 			gsap.to(node, {
