@@ -30,6 +30,8 @@
 			};
 
 			gsap.to(node, fadeOutMain);
+
+			return { duration: DUR_FADE };
 		}
 
 		if (fromModal) {
@@ -54,7 +56,7 @@
 			gsap.to(curtain, fadeOutCurtain);
 		}
 
-		return { duration: 1400 };
+		return { duration: 2000 };
 	}
 
 	function animateIn(node: HTMLElement) {
@@ -69,6 +71,8 @@
 
 			gsap.set(node, hideMain);
 			gsap.to(node, fadeInMain);
+
+			return { duration: DUR_FADE + DLY_FADE };
 		}
 
 		if (toModal) {
@@ -98,7 +102,7 @@
 			gsap.to(curtain, fadeInCurtain);
 		}
 
-		return { duration: 1400 };
+		return { duration: 2000 };
 	}
 
 	/**
