@@ -66,9 +66,9 @@
 
 	{#key refresh}
 		<div class="secondary" in:animateIn out:animateOut>
-			{#if $navStore.items}
+			{#if $navStore.links}
 				<ul class="links">
-					{#each $navStore.items as { href, name }}
+					{#each $navStore.links as { href, name }}
 						<li>
 							<a {href} class:underline={href === $page.url.pathname}>{name}</a>
 						</li>

@@ -1,11 +1,11 @@
 <script lang="ts">
 	import type { SiteQuery } from '$lib/sanity/queries';
-	import { setCategories } from '$lib/stores';
+	import { setNavCategories } from '$lib/stores';
 	import { ImageGrid } from '$components';
 
 	export let data: SiteQuery;
 
-	setCategories(data.categories);
+	setNavCategories(data.categories);
 </script>
 
 <ImageGrid
