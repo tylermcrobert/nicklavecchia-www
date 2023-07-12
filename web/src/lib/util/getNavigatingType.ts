@@ -1,7 +1,7 @@
 import type { Navigation } from '@sveltejs/kit';
 import { MODAL_ROUTES } from '../../constants';
 
-export function navType(navigating: Navigation | null) {
+export function getNavigatingType(navigating: Navigation | null) {
 	const navigatingTo = navigating?.to?.route.id || '';
 	const navigatingFrom = navigating?.from?.route.id || '';
 

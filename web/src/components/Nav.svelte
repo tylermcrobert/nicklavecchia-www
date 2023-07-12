@@ -3,7 +3,7 @@
 	import { navigating, page } from '$app/stores';
 	import { navStore } from '$lib/stores';
 	import { DLY_FADE, DUR_FADE, DUR_MODAL, MODAL_ROUTES } from '../constants';
-	import { navType } from '$lib/util/navType';
+	import { getNavigatingType } from '$lib/util/getNavigatingType';
 	import { afterNavigate } from '$app/navigation';
 
 	/** Navigation top-level routes */
@@ -20,7 +20,7 @@
 	$: isModal = MODAL_ROUTES.includes($page.route.id || '');
 
 	/** Change delay based on */
-	$: ({ lateral } = navType($navigating));
+	$: ({ lateral } = getNavigatingType($navigating));
 
 	/** This is for back button*/
 	let prevRoute: string | null = '/';

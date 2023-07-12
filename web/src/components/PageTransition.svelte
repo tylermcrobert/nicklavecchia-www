@@ -10,11 +10,11 @@
 		DUR_FADE,
 		DLY_FADE
 	} from '../constants';
-	import { navType } from '$lib/util/navType';
+	import { getNavigatingType } from '$lib/util/getNavigatingType';
 
 	export let refresh: string;
 
-	$: ({ toModal, fromModal, lateral } = navType($navigating));
+	$: ({ toModal, fromModal, lateral } = getNavigatingType($navigating));
 
 	let wrapper: HTMLElement;
 	let content: HTMLElement;
