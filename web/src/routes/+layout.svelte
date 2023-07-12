@@ -1,20 +1,12 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { Nav } from '$components';
+	import { PageTransition, Nav } from '$components';
 	import '../styles/globals.scss';
-	import Lenis from '@studio-freight/lenis';
 
-	onMount(() => {
-		const lenis = new Lenis();
-
-		function raf(time: number) {
-			lenis.raf(time);
-			requestAnimationFrame(raf);
-		}
-
-		requestAnimationFrame(raf);
-	});
+	export let data;
 </script>
 
-<Nav />
-<slot />
+<Nav refresh={data.navRefresh} />
+
+<PageTransition refresh={data.pathname}>
+	<slot />
+</PageTransition>

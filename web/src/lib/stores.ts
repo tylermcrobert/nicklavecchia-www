@@ -2,15 +2,15 @@ import { writable } from 'svelte/store';
 import type { WorkCategory } from './sanity/queries';
 
 type NavItem = { name: string; href: string };
-type NavStore = { items: NavItem[] | null; title: string | null };
+type NavStore = { links: NavItem[] | null; title: string | null };
 
-export const navStore = writable<NavStore>({ items: [], title: null });
+export const navStore = writable<NavStore>({ links: [], title: null });
 
 export function setTitle(title: string) {
-	navStore.update(() => ({ items: null, title }));
+	navStore.update(() => ({ links: null, title }));
 }
 
-export function setCategories(categories: WorkCategory[]) {
+export function setNavCategories(categories: WorkCategory[]) {
 	const otherCats = categories.map((category) => ({
 		name: category.title,
 		href: `/category/${category.slug}`
@@ -20,6 +20,6 @@ export function setCategories(categories: WorkCategory[]) {
 
 	navStore.update(() => ({
 		title: null,
-		items: [overview, ...otherCats]
+		links: [overview, ...otherCats]
 	}));
 }
