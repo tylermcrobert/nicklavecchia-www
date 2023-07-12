@@ -37,7 +37,6 @@
 		const tl = gsap.timeline();
 
 		const fadeOut = {
-			delay: lateral ? 0 : DLY_FADE,
 			opacity: 0,
 			duration: DUR_FADE,
 			ease: Power3.easeOut
@@ -76,12 +75,15 @@
 </script>
 
 <nav class="nav">
+	<!-- Logo -->
 	<div class="logo">
 		<a href={isModal ? prevRoute : '/'}>Nick LaVecchia</a>
 	</div>
 
+	<!-- Secondary area  -->
 	{#key refresh}
 		<div class="secondary" in:animateIn out:animateOut>
+			<!-- Secondary Links -->
 			{#if $navStore.links}
 				<ul class="links">
 					{#each $navStore.links as { href, name }}
@@ -92,12 +94,14 @@
 				</ul>
 			{/if}
 
+			<!-- Page Title -->
 			{#if $navStore.title}
 				<div class="title">{$navStore.title}</div>
 			{/if}
 		</div>
 	{/key}
 
+	<!-- Right side  -->
 	{#if !isModal}
 		<ul class="links" in:animateIn out:animateOut>
 			{#each ROUTES as { display, href }}
@@ -109,6 +113,7 @@
 			{/each}
 		</ul>
 	{:else}
+		<!-- Close button (For modal) -->
 		<a in:animateIn out:animateOut href={prevRoute}>✕ Close</a>
 	{/if}
 </nav>
