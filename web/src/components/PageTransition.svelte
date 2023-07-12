@@ -24,7 +24,7 @@
 	function animateOut(node: HTMLElement) {
 		if (fromModal) {
 			gsap.set(curtain, { opacity: 1 });
-			gsap.set(node, { y: '0' });
+			gsap.set(node, { y: '0', zIndex: 'var(--z-main-above-curtain)' });
 
 			gsap.to(node, {
 				delay: DLY_MODAL,
@@ -56,7 +56,7 @@
 	function animateIn(node: HTMLElement) {
 		if (toModal) {
 			gsap.set(curtain, { opacity: 0 });
-			gsap.set(node, { y: '100vh' });
+			gsap.set(node, { y: '100vh', zIndex: 'var(--z-main-above-curtain)' });
 
 			gsap.to(node, {
 				delay: DLY_MODAL,
@@ -133,7 +133,7 @@
 		background: white;
 		overflow-y: scroll;
 
-		z-index: var(--z-main);
+		z-index: var(--z-main-below-curtain);
 
 		&::-webkit-scrollbar {
 			display: none;
