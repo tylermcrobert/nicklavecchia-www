@@ -101,7 +101,7 @@
 	.nav {
 		position: fixed;
 		top: 0;
-		z-index: 200;
+		z-index: var(--z-nav);
 
 		width: 100%;
 		height: var(--nav-height);
