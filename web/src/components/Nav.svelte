@@ -40,12 +40,14 @@
 
 		tl.set(node, { display: 'none' });
 
-		return { duration: DUR_FADE * 1000 };
+		return { duration: tl.totalDuration() * 1000 };
 	}
 
 	function animateIn(node: HTMLElement) {
-		gsap.set(node, { display: 'none', opacity: 0 });
-		gsap.to(node, {
+		const tl = gsap.timeline();
+
+		tl.set(node, { display: 'none', opacity: 0 });
+		tl.to(node, {
 			delay: lateral ? DLY_FADE + 0.1 : DUR_MODAL, // add a .1s to avoid flashes
 			duration: DUR_FADE,
 			display: 'flex',
@@ -53,7 +55,7 @@
 			ease: Power3.easeIn
 		});
 
-		return { duration: DLY_FADE + DUR_FADE * 1000 };
+		return { duration: tl.totalDuration() * 1000 };
 	}
 </script>
 
