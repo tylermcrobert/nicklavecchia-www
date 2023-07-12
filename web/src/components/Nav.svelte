@@ -6,22 +6,27 @@
 	import { navType } from '$lib/util/navType';
 	import { afterNavigate } from '$app/navigation';
 
+	/** Navigation top-level routes */
 	const ROUTES = [
 		{ display: 'Portfolio', href: '/' },
 		{ display: 'About', href: '/about' },
 		{ display: 'Fine Art', href: '/fine-art' }
 	];
 
+	/** When to refresh navigation animations */
 	export let refresh: string;
 
+	// Changes home button destination on mobile
 	$: isModal = MODAL_ROUTES.includes($page.route.id || '');
+
+	/** Change delay based on */
 	$: ({ lateral } = navType($navigating));
 
+	/** This is for back button*/
 	let prevRoute: string | null = '/';
 
-	afterNavigate((nav) => {
-		prevRoute = nav.from?.url.pathname || '/';
-	});
+	/** Update prevRoute on navigate */
+	afterNavigate((nav) => (prevRoute = nav.from?.url.pathname || '/'));
 
 	function animateOut(node: HTMLElement) {
 		const tl = gsap.timeline();
@@ -53,7 +58,9 @@
 </script>
 
 <nav class="nav">
-	<div class="logo"><a href={isModal ? prevRoute : '/'}>Nick LaVecchia</a></div>
+	<div class="logo">
+		<a href={isModal ? prevRoute : '/'}>Nick LaVecchia</a>
+	</div>
 
 	{#key refresh}
 		<div class="secondary" in:animateIn out:animateOut>
