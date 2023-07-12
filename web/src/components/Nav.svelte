@@ -28,32 +28,48 @@
 	/** Update prevRoute on navigate */
 	afterNavigate((nav) => (prevRoute = nav.from?.url.pathname || '/'));
 
+	/**
+	 * Fade element out.
+	 * Applies to multiple elements
+	 */
+
 	function animateOut(node: HTMLElement) {
 		const tl = gsap.timeline();
 
-		tl.to(node, {
+		const fadeOut = {
 			delay: lateral ? 0 : DLY_FADE,
 			opacity: 0,
 			duration: DUR_FADE,
 			ease: Power3.easeOut
-		});
+		};
 
-		tl.set(node, { display: 'none' });
+		const removeNode = { display: 'none' };
+
+		tl.to(node, fadeOut);
+		tl.set(node, removeNode);
 
 		return { duration: tl.totalDuration() * 1000 };
 	}
 
+	/**
+	 * Fade element in.
+	 * Applies to multiple elements
+	 */
+
 	function animateIn(node: HTMLElement) {
 		const tl = gsap.timeline();
 
-		tl.set(node, { display: 'none', opacity: 0 });
-		tl.to(node, {
+		const hideNode = { display: 'none', opacity: 0 };
+		const fadeIn = {
 			delay: lateral ? DLY_FADE + 0.1 : DUR_MODAL, // add a .1s to avoid flashes
 			duration: DUR_FADE,
 			display: 'flex',
 			opacity: 1,
 			ease: Power3.easeIn
-		});
+		};
+
+		tl.set(node, hideNode);
+		tl.to(node, fadeIn);
 
 		return { duration: tl.totalDuration() * 1000 };
 	}
