@@ -3,13 +3,7 @@
 	import gsap, { Power3 } from 'gsap';
 	import { onMount } from 'svelte';
 	import Lenis from '@studio-freight/lenis';
-	import {
-		DLY_MODAL,
-		DUR_MODAL,
-		DLY_CURTAIN_OUT,
-		DUR_FADE,
-		DLY_FADE
-	} from '../constants';
+	import { DUR_MODAL, DUR_FADE, DLY_FADE } from '../constants';
 	import { getNavigatingType } from '$lib/util/getNavigatingType';
 
 	export let refresh: string;
@@ -38,7 +32,7 @@
 			const initMain = { y: '0', zIndex: 'var(--z-main-above-curtain)' };
 
 			const slideDownMain = {
-				delay: DLY_MODAL,
+				delay: 0.4,
 				duration: DUR_MODAL,
 				ease: Power3.easeInOut,
 				y: '100vh'
@@ -46,7 +40,7 @@
 
 			const fadeOutCurtain = {
 				duration: DUR_MODAL,
-				delay: DLY_CURTAIN_OUT,
+				delay: 1.2,
 				ease: Power3.easeInOut,
 				opacity: 0
 			};
@@ -83,7 +77,7 @@
 			};
 
 			const slideInMain = {
-				delay: DLY_MODAL,
+				delay: 0.6,
 				duration: DUR_MODAL,
 				ease: Power3.easeInOut,
 				y: '0vh'
@@ -171,7 +165,7 @@
 		height: 100vh;
 		opacity: 0;
 
-		background: rgba(0, 0, 0, 0.3);
+		background: rgba(0, 0, 0, 0.4);
 		pointer-events: none;
 		z-index: var(--z-curtain);
 	}
