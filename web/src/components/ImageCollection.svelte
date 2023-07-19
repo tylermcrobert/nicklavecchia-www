@@ -13,9 +13,12 @@
 
 <style lang="scss">
 	.images {
+		white-space: nowrap;
+
 		:global(img) {
-			/* height: 80vh;
-			width: auto; */
+			height: 50vh;
+			width: auto;
+			display: inline-block;
 		}
 	}
 </style>
