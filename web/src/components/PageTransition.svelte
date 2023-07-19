@@ -155,6 +155,7 @@
 
 	.content {
 		padding-top: var(--nav-height);
+		height: 100%;
 	}
 
 	.curtain {
