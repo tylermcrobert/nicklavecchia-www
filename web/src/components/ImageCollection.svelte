@@ -143,6 +143,7 @@
 
 		:global(img) {
 			height: 50%;
+			width: auto;
 			margin-right: 5vh;
 
 			pointer-events: none;
