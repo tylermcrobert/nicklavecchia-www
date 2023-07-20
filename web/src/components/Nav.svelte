@@ -60,7 +60,7 @@
 
 		const hideNode = { display: 'none', opacity: 0 };
 		const fadeIn = {
-			delay: lateral ? duration.medium : 1.1,
+			delay: lateral ? duration.medium : duration.long,
 			duration: duration.short,
 			display: 'flex',
 			opacity: 1,
