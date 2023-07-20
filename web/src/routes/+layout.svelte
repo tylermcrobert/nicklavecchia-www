@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { PageTransition, Nav } from '$components';
+	import { PageTransition, Nav, SmoothScroll } from '$components';
 	import '../styles/globals.scss';
 
 	export let data;
@@ -8,5 +8,7 @@
 <Nav refresh={data.navRefresh} />
 
 <PageTransition refresh={data.pathname}>
-	<slot />
+	<SmoothScroll>
+		<slot />
+	</SmoothScroll>
 </PageTransition>

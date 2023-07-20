@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { navigating } from '$app/stores';
 	import gsap, { Power3 } from 'gsap';
-	import { onMount } from 'svelte';
-	import Lenis from '@studio-freight/lenis';
+
 	import { DUR_MODAL, DUR_FADE, DLY_FADE } from '../constants';
 	import { getNavigatingType } from '$lib/util/getNavigatingType';
 
@@ -10,10 +9,7 @@
 
 	$: ({ toModal, fromModal, lateral } = getNavigatingType($navigating));
 
-	let wrapper: HTMLElement;
-	let content: HTMLElement;
 	let curtain: HTMLElement;
-	let lenis: Lenis;
 
 	function animateOut(node: HTMLElement) {
 		if (lateral) {
@@ -98,38 +94,11 @@
 
 		return { duration: 2000 };
 	}
-
-	/**
-	 * Smooth scroll
-	 */
-
-	onMount(() => {
-		lenis = new Lenis({ wrapper, content });
-
-		function raf(time: number) {
-			lenis.raf(time);
-			requestAnimationFrame(raf);
-		}
-
-		requestAnimationFrame(raf);
-	});
-
-	function handleNewNode() {
-		lenis = new Lenis({ wrapper, content });
-	}
 </script>
 
 {#key refresh}
-	<div
-		in:animateIn
-		out:animateOut
-		class="animate"
-		bind:this={wrapper}
-		on:introstart={handleNewNode}
-	>
-		<div bind:this={content} class="content">
-			<slot />
-		</div>
+	<div in:animateIn out:animateOut class="animate">
+		<slot />
 	</div>
 {/key}
 
@@ -139,23 +108,12 @@
 	.animate {
 		position: fixed;
 		left: 0;
+		z-index: var(--z-main-below-curtain);
 
 		width: 100vw;
 		height: 100vh;
 
 		background: white;
-		overflow-y: scroll;
-
-		z-index: var(--z-main-below-curtain);
-
-		&::-webkit-scrollbar {
-			display: none;
-		}
-	}
-
-	.content {
-		padding-top: var(--nav-height);
-		height: 100%;
 	}
 
 	.curtain {
