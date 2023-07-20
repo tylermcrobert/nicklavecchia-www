@@ -2,7 +2,7 @@
 	import { gsap, Power3 } from 'gsap';
 	import { navigating, page } from '$app/stores';
 	import { navStore } from '$lib/stores';
-	import { DLY_FADE, MODAL_ROUTES, DUR_FADE } from '../constants';
+	import { MODAL_ROUTES, duration } from '../constants';
 	import { getNavigatingType } from '$lib/util/getNavigatingType';
 	import { afterNavigate } from '$app/navigation';
 
@@ -38,7 +38,7 @@
 
 		const fadeOut = {
 			opacity: 0,
-			duration: DUR_FADE,
+			duration: duration.short,
 			ease: Power3.easeOut
 		};
 
@@ -60,8 +60,8 @@
 
 		const hideNode = { display: 'none', opacity: 0 };
 		const fadeIn = {
-			delay: lateral ? DLY_FADE : 1.1,
-			duration: DUR_FADE,
+			delay: lateral ? duration.medium : 1.1,
+			duration: duration.short,
 			display: 'flex',
 			opacity: 1,
 			ease: Power3.easeIn

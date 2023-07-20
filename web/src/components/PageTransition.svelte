@@ -2,8 +2,8 @@
 	import { navigating } from '$app/stores';
 	import gsap, { Power3 } from 'gsap';
 
-	import { DUR_MODAL, DUR_FADE, DLY_FADE } from '../constants';
 	import { getNavigatingType } from '$lib/util/getNavigatingType';
+	import { duration } from '../constants';
 
 	export let refresh: string;
 
@@ -14,29 +14,29 @@
 	function animateOut(node: HTMLElement) {
 		if (lateral) {
 			const fadeOutMain = {
-				duration: DUR_FADE,
+				duration: duration.medium,
 				ease: Power3.easeOut,
 				opacity: 0
 			};
 
 			gsap.to(node, fadeOutMain);
 
-			return { duration: DUR_FADE };
+			return { duration: duration.medium * 1000 };
 		}
 
 		if (fromModal) {
 			const initMain = { y: '0', zIndex: 'var(--z-main-above-curtain)' };
 
 			const slideDownMain = {
-				delay: 0.4,
-				duration: DUR_MODAL,
+				delay: duration.short,
+				duration: duration.long,
 				ease: Power3.easeInOut,
 				y: '100vh'
 			};
 
 			const fadeOutCurtain = {
-				duration: DUR_MODAL,
-				delay: 1.2,
+				duration: duration.xLong,
+				delay: duration.medium,
 				ease: Power3.easeInOut,
 				opacity: 0
 			};
@@ -53,8 +53,8 @@
 		if (lateral) {
 			const hideMain = { opacity: 0 };
 			const fadeInMain = {
-				duration: DUR_FADE,
-				delay: DLY_FADE,
+				duration: duration.medium,
+				delay: duration.short,
 				opacity: 1,
 				ease: Power3.easeIn
 			};
@@ -62,7 +62,7 @@
 			gsap.set(node, hideMain);
 			gsap.to(node, fadeInMain);
 
-			return { duration: DUR_FADE + DLY_FADE };
+			return { duration: duration.medium + duration.short };
 		}
 
 		if (toModal) {
@@ -73,16 +73,15 @@
 			};
 
 			const slideInMain = {
-				delay: 0.6,
-				duration: DUR_MODAL,
+				delay: duration.medium,
+				duration: duration.long,
 				ease: Power3.easeInOut,
 				y: '0vh'
 			};
 
 			const fadeInCurtain = {
-				duration: DUR_MODAL,
+				duration: duration.long,
 				delay: 0,
-				ease: Power3.easeInOut,
 				opacity: 1
 			};
 
