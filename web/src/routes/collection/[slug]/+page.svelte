@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ImageCollection from '$components/ImageCollection.svelte';
+	import { ImageCollection } from '$components';
 	import type { CollectionQuery } from '$lib/sanity/queries';
 	import { setTitle } from '$lib/stores';
 
