@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { ResponsiveImage } from '$components';
 	import type { CollectionQuery } from '$lib/sanity/queries';
+	import { lenisStore } from '$lib/stores';
 	import { isTouchEvent } from '$lib/util/isTouchEvent';
 	import { onMount } from 'svelte';
 
@@ -67,14 +68,6 @@
 	}
 
 	/**
-	 * Handles scroll
-	 */
-
-	function handleWheel(e: WheelEvent) {
-		inertia = e.deltaY + e.deltaX;
-	}
-
-	/**
 	 * Sets container width
 	 */
 
@@ -86,9 +79,23 @@
 	 * Initialize
 	 */
 
+	function onLenis() {
+		if (!$lenisStore) return;
+
+		$lenisStore.on('scroll', (e: { velocity: number }) => {
+			inertia += e.velocity / 80;
+		});
+
+		if (!$lenisStore.options.infinite) {
+			$lenisStore.options.infinite = true;
+		}
+	}
+
 	onMount(() => {
 		setWidth();
 		tick();
+
+		lenisStore.subscribe((lenis) => lenis && onLenis());
 
 		return () => {
 			cancelAnimationFrame(raf);
@@ -96,6 +103,7 @@
 	});
 </script>
 
+<div class="shim" />
 <div class="imgsWrapper">
 	<div
 		class="imgs"
@@ -110,7 +118,6 @@
 		on:touchstart={handleDragStart}
 		on:touchend={handleDragEnd}
 		on:touchmove={handlePointerMove}
-		on:wheel={handleWheel}
 		on:resize={setWidth}
 		on:blur={handleDragEnd}
 	>
@@ -125,11 +132,12 @@
 		height: 100%;
 		width: 100%;
 		overflow: hidden;
+		position: fixed;
+		top: 0;
+		left: 0;
 	}
 
 	.imgs {
-		will-change: transform;
-
 		display: flex;
 		align-items: center;
 

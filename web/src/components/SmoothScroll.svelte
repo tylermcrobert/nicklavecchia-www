@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import Lenis from '@studio-freight/lenis';
+	import { lenisStore } from '$lib/stores';
 
 	let lenis: Lenis;
 	let wrapper: HTMLElement;
@@ -8,6 +9,7 @@
 
 	onMount(() => {
 		lenis = new Lenis({ wrapper, content });
+		lenisStore.set(lenis);
 
 		function raf(time: number) {
 			lenis.raf(time);

@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store';
 import type { WorkCategory } from './sanity/queries';
+import type Lenis from '@studio-freight/lenis';
 
 type NavItem = { name: string; href: string };
 type NavStore = { links: NavItem[] | null; title: string | null };
@@ -23,3 +24,9 @@ export function setNavCategories(categories: WorkCategory[]) {
 		links: [overview, ...otherCats]
 	}));
 }
+
+/**
+ *
+ */
+
+export const lenisStore = writable<Lenis | undefined>();
