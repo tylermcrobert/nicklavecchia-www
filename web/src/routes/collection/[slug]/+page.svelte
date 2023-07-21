@@ -8,4 +8,4 @@
 	setTitle(data.title);
 </script>
 
-<ImageCollection {data} />
+<ImageCollection images={data.images} />

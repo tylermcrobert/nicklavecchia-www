@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { ResponsiveImage } from '$components';
-	import type { CollectionQuery } from '$lib/sanity/queries';
 	import { isTouchEvent } from '$lib/util/isTouchEvent';
 	import { onMount } from 'svelte';
+	import type { SanityImage } from './ResponsiveImage/types';
 
-	export let data: CollectionQuery;
+	export let images: SanityImage[];
 
 	const FRICTION = 0.96;
 	const MOVE_SPEED = 0.1;
@@ -114,7 +114,7 @@
 		on:resize={setWidth}
 		on:blur={handleDragEnd}
 	>
-		{#each [...data.images, ...data.images] as image}
+		{#each [...images, ...images] as image}
 			<ResponsiveImage {image} sizes="50vh" alt="Nick LaVecchia" />
 		{/each}
 	</div>
