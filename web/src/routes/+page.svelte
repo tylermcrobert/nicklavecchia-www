@@ -9,6 +9,7 @@
 </script>
 
 <ImageGrid
+	enableJump
 	items={data.overview.map((item) => ({
 		image: item,
 		title: null,

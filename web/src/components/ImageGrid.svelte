@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { ResponsiveImage } from '$components';
+	import { setCollectionIndex } from '$lib/stores';
 	import type { SanityImage } from './ResponsiveImage/types';
 
 	type ImageGridItem = {
@@ -9,13 +10,19 @@
 		href: string | null;
 	};
 
+	export let enableJump = false;
 	export let items: ImageGridItem[];
 	export let type: 'inline' | 'grid' = 'inline';
+
+	function handleJump(i: number) {
+		if (!enableJump) return;
+		setCollectionIndex(i);
+	}
 </script>
 
 <div class={`imageGrid ${type}`}>
-	{#each items as { href, image, title, imageSrc }}
-		<a {href} class="gridItem">
+	{#each items as { href, image, title, imageSrc }, i}
+		<a {href} class="gridItem" on:click={() => handleJump(i)}>
 			{#if image}
 				<ResponsiveImage {image} sizes="10vw" alt="Nick LaVecchia" />
 			{:else if imageSrc}
