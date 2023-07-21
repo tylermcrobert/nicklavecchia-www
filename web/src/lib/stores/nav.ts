@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import type { WorkCategory } from './sanity/queries';
+import type { WorkCategory } from '../sanity/queries';
 
 type NavItem = { name: string; href: string };
 type NavStore = { links: NavItem[] | null; title: string | null };
