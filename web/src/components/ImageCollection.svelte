@@ -137,6 +137,8 @@
 		width: max-content;
 		cursor: grab;
 
+		padding-bottom: var(--nav-height);
+
 		&:active {
 			cursor: grabbing;
 		}
@@ -144,7 +146,7 @@
 		:global(img) {
 			height: 50%;
 			width: auto;
-			margin-right: 5vh;
+			margin-left: 5vh;
 
 			pointer-events: none;
 			user-select: none;
