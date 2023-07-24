@@ -239,6 +239,25 @@
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.21.tgz#5de5a2385a35309427f6011992b544514d559aa1"
   integrity sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==
 
+"@portabletext/svelte@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@portabletext/svelte/-/svelte-2.0.0.tgz#09fe25999444586df6092d594e85828966263936"
+  integrity sha512-fyA2BFC4c/16PJxu1QpI8PC1W32TJjEPHRh69aW19OFYv5m4+7Gd4J4+Oq9C1FTKycNfcUTNaEik07KqhrLPfQ==
+  dependencies:
+    "@portabletext/toolkit" "^2.0.1"
+
+"@portabletext/toolkit@^2.0.1":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@portabletext/toolkit/-/toolkit-2.0.4.tgz#5e5d4461f3451736c3165962b4a39d0693c9834b"
+  integrity sha512-ZE+WntiZQ40vxMBu3/QXRbGjzL8/R2BOFgdf6danJOahvlL9lZ1/DDShyUsxNaAvoBarwGJtjuZVOcRJWcsVng==
+  dependencies:
+    "@portabletext/types" "^2.0.5"
+
+"@portabletext/types@^2.0.5":
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/@portabletext/types/-/types-2.0.5.tgz#89872bd5b25df8c1d917e13fe3f035cdf135ae0e"
+  integrity sha512-AceKp/Y6UIzvUe/T675oPKlO2Dnt1BVIiUpwhcplPzLeYqaYaWYvb7ricVyWj7j0rukYRgBRQdrTBvgo9E1D+g==
+
 "@sanity/client@^6.1.5":
   version "6.1.5"
   resolved "https://registry.yarnpkg.com/@sanity/client/-/client-6.1.5.tgz#4cd4b5f57f4c89598e6c42bbebde65778dec559b"
