@@ -1,5 +1,6 @@
 import groq from 'groq';
 import type { SanityImage } from '$components/ResponsiveImage/types';
+import type { InputValue } from '@portabletext/svelte/ptTypes';
 
 export const siteQuery = groq`
   *[_type  == 'site'][0]{
@@ -47,4 +48,32 @@ export const collectionQuery = groq`
 export type CollectionQuery = {
 	images: SanityImage[];
 	title: string;
+};
+
+/**
+ * About
+ */
+
+export const aboutQuery = groq`
+  *[_type  == 'site'][0]{
+    aboutImages,
+    info {
+      bio,
+      clients,
+      contactMethods
+    }
+  }
+`;
+
+export type AboutQuery = {
+	aboutImages: SanityImage[];
+	info: {
+		bio: InputValue;
+		clients: string[];
+		contactMethods: {
+			label: string;
+			url: string;
+			value: string;
+		}[];
+	};
 };
