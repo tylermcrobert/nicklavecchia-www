@@ -46,6 +46,7 @@
 		display: flex;
 		gap: var(--space-standard);
 		padding: 0 var(--space-standard);
+		margin-top: var(--space-large);
 
 		overflow-x: scroll;
 		scroll-snap-type: x mandatory;
