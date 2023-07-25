@@ -82,7 +82,12 @@
 
 	<!-- Secondary area  -->
 	{#key refresh}
-		<div class="secondary" in:animateIn out:animateOut>
+		<div
+			class="secondary"
+			class:title={$navStore.title}
+			in:animateIn
+			out:animateOut
+		>
 			<!-- Secondary Links -->
 			{#if $navStore.links}
 				<ul class="links">
@@ -96,7 +101,7 @@
 
 			<!-- Page Title -->
 			{#if $navStore.title}
-				<div class="title">{$navStore.title}</div>
+				<h1>{$navStore.title}</h1>
 			{/if}
 		</div>
 	{/key}
@@ -118,7 +123,9 @@
 	{/if}
 </nav>
 
-<style>
+<style lang="scss">
+	@import '../styles/mixins';
+
 	.nav {
 		position: fixed;
 		top: 0;
@@ -140,6 +147,24 @@
 
 	.secondary {
 		flex: 1;
+
+		@include max-width('tablet') {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+
+			width: 100%;
+			background: white;
+			height: var(--nav-height);
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			&.title {
+				display: none;
+			}
+		}
 	}
 
 	.links {
