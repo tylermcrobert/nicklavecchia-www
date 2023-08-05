@@ -1,11 +1,14 @@
 <script lang="ts">
 	import ResponsiveImage from '$components/ResponsiveImage/ResponsiveImage.svelte';
+	import Seo from '$components/Seo.svelte';
 	import { setTitle } from '$lib/stores';
 	import { PortableText } from '@portabletext/svelte';
 
 	export let data;
 	setTitle('Bio');
 </script>
+
+<Seo title="About" />
 
 <div class="images">
 	{#each data.aboutImages as image}
