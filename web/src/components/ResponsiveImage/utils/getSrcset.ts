@@ -8,9 +8,10 @@ type SrcsetOptions = {
 };
 
 /**
- * Provides srcset for image
- * @param image Sanity Image
- * @param options Options
+ * Generates srcset for responsive images.
+ * @param image Sanity Image object.
+ * @param options Srcset options
+ * @returns Comma-separated srcset string.
  */
 
 export default function getSrcset(
