@@ -3,6 +3,7 @@
 	import { setNavCategories } from '$lib/stores';
 	import { ImageGrid } from '$components';
 	import Seo from '$components/Seo.svelte';
+	import ResponsivePreload from '$components/ResponsiveImage/ResponsivePreload.svelte';
 
 	export let data: SiteQuery;
 
@@ -19,3 +20,7 @@
 		href: '/collection/overview'
 	}))}
 />
+
+{#each data.overview as overviewImg}
+	<ResponsivePreload image={overviewImg} sizes="50vw" />
+{/each}
