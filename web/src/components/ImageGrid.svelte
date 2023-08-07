@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { ResponsiveImage } from '$components';
 	import { setCollectionIndex } from '$lib/stores';
-	import type { SanityImage } from './ResponsiveImage/types';
+	import type { SanityImage } from './ResponsiveImage/utils/types';
 
 	type ImageGridItem = {
 		image: SanityImage | null;
