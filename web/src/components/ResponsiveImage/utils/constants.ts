@@ -13,3 +13,10 @@ export const IMG_DEVICE_SIZES = [
 
 // Halfway through standard and retna
 export const IMG_SCALING = 1.5;
+
+/**
+ * Default quality
+ * Sets the default quality of an image unless specified
+ */
+
+export const DEFAULT_QUALITY = 75;

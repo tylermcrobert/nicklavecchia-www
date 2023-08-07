@@ -4,13 +4,14 @@
 	import getImageDimensions from './utils/getImageDimensions';
 	import { onMount } from 'svelte';
 	import getSrcset from './utils/getSrcset';
+	import { DEFAULT_QUALITY } from './utils/constants';
 
 	export let image: SanityImage;
 	export let alt: string;
 
 	export let aspect: number | null = null;
 	export let sizes: string;
-	export let quality = 75;
+	export let quality = DEFAULT_QUALITY;
 	export let color: string | undefined = undefined;
 
 	let node: HTMLImageElement;
