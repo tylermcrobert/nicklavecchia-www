@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { urlFor } from '$lib/sanity/client';
-	import { IMG_DEVICE_SIZES, IMG_SCALING } from './utils/constants';
 	import type { SanityImage } from './utils/types';
 	import getImageDimensions from './utils/getImageDimensions';
 	import { onMount } from 'svelte';
+	import getSrcset from './utils/getSrcset';
 
 	export let image: SanityImage;
 	export let alt: string;
 
-	export let aspect: number | undefined = undefined;
+	export let aspect: number | null = null;
 	export let sizes: string;
 	export let quality = 75;
 	export let color: string | undefined = undefined;
@@ -23,15 +23,7 @@
 	 * Create an srcset for responsive image
 	 */
 
-	$: srcset = IMG_DEVICE_SIZES.map((size) => {
-		let builder = urlFor(image).width(size).auto('format').quality(quality);
-
-		if (enforcedAspect) {
-			builder = builder.height(Math.round(size / enforcedAspect));
-		}
-
-		return `${builder.url()} ${Math.round(size / IMG_SCALING)}w`;
-	}).join(', ');
+	$: srcset = getSrcset(image, { quality, enforcedAspect });
 
 	/**
 	 * Add inline style for img
