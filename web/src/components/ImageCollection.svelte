@@ -2,7 +2,7 @@
 	import { ResponsiveImage } from '$components';
 	import { isTouchEvent } from '$lib/util/isTouchEvent';
 	import { onMount } from 'svelte';
-	import type { SanityImage } from './ResponsiveImage/types';
+	import type { SanityImage } from './ResponsiveImage/utils/types';
 
 	export let images: SanityImage[];
 
