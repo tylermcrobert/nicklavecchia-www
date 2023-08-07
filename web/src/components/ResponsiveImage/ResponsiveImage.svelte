@@ -9,7 +9,7 @@
 	export let image: SanityImage;
 	export let alt: string;
 
-	export let aspect: number | null = null;
+	export let enforcedAspect: number | null = null;
 	export let sizes: string;
 	export let quality = DEFAULT_QUALITY;
 	export let color: string | undefined = undefined;
@@ -18,7 +18,6 @@
 	let loaded = false;
 
 	$: naturalAspect = getImageDimensions(image).aspectRatio;
-	$: enforcedAspect = aspect; // rename to be more clear
 
 	/**
 	 * Create an srcset for responsive image
