@@ -6,7 +6,7 @@
 
 	export let data: CollectionQuery;
 
-	$: arrangedImages = data.images
+	$: rearrangedImages = data.images
 		.slice($collectionIndexJump)
 		.concat(data.images.slice(0, $collectionIndexJump));
 
@@ -15,4 +15,4 @@
 
 <Seo title={data.title} />
 
-<ImageCollection images={arrangedImages} />
+<ImageCollection images={rearrangedImages} />
