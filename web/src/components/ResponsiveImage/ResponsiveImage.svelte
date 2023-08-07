@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { urlFor } from '$lib/sanity/client';
-	import { IMG_DEVICE_SIZES } from './utils/sizes';
+	import { IMG_DEVICE_SIZES } from './utils/constants';
 	import type { SanityImage } from './utils/types';
 	import getImageDimensions from './utils/getImageDimensions';
 	import { onMount } from 'svelte';
