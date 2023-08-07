@@ -1,14 +1,9 @@
 <script lang="ts">
 	import { urlFor } from '$lib/sanity/client';
-	import { IMG_DEVICE_SIZES } from './utils/constants';
+	import { IMG_DEVICE_SIZES, IMG_SCALING } from './utils/constants';
 	import type { SanityImage } from './utils/types';
 	import getImageDimensions from './utils/getImageDimensions';
 	import { onMount } from 'svelte';
-
-	/**
-	 * Halfway through standard and retna
-	 */
-	const RESOLUTION = 1.5;
 
 	export let image: SanityImage;
 	export let alt: string;
@@ -35,7 +30,7 @@
 			builder = builder.height(Math.round(size / enforcedAspect));
 		}
 
-		return `${builder.url()} ${Math.round(size / RESOLUTION)}w`;
+		return `${builder.url()} ${Math.round(size / IMG_SCALING)}w`;
 	}).join(', ');
 
 	/**
