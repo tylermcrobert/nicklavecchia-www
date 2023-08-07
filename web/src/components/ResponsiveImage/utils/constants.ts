@@ -1,3 +1,7 @@
+/**
+ * Common device sizes for window
+ */
+
 export const IMG_DEVICE_SIZES = [
 	150, 375, 640, 750, 828, 1080, 1200, 1400, 1600
 ];
