@@ -18,18 +18,30 @@ export default function getSrcset(
 	image: SanityImage,
 	{ quality, enforcedAspect }: SrcsetOptions
 ) {
-	const srcSet = IMG_DEVICE_SIZES.map((size) => {
-		// Uncommitted url builder
-		let builder = urlFor(image).width(size).auto('format').quality(quality);
+	/**
+	 * Src Set
+	 *
+	 * Generates string for each device
+	 * size and joins with a comma
+	 */
 
-		// Optionally enforce an aspect ratio by modifiying the height
+	const srcSet = IMG_DEVICE_SIZES.map((width) => getUrl(width)).join(', ');
+
+	/**
+	 * Get URL
+	 * @param width width of srcset size
+	 * @returns
+	 */
+
+	function getUrl(width: number) {
+		let builder = urlFor(image).width(width).auto('format').quality(quality);
+
 		if (enforcedAspect) {
-			builder = builder.height(Math.round(size / enforcedAspect));
+			builder = builder.height(Math.round(width / enforcedAspect));
 		}
 
-		// Returns url and size from the constants file
-		return `${builder.url()} ${Math.round(size / IMG_SCALING)}w`;
-	}).join(', ');
+		return `${builder.url()} ${Math.round(width / IMG_SCALING)}w`;
+	}
 
 	return srcSet;
 }
