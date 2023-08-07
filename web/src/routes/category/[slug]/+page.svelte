@@ -1,8 +1,7 @@
 <script lang="ts">
 	import type { SiteQuery, WorkCategory } from '$lib/sanity/queries';
 	import { setNavCategories } from '$lib/stores';
-	import ImageGrid from '$components/ImageGrid.svelte';
-	import Seo from '$components/Seo.svelte';
+	import { ImageGrid, ImageGridItem, ResponsiveImage, Seo } from '$components';
 
 	export let data: { categoryData: WorkCategory; siteData: SiteQuery };
 
@@ -11,10 +10,15 @@
 
 <Seo title={data.categoryData.title} />
 
-<ImageGrid
-	items={data.categoryData.projects.map((item) => ({
-		image: item.featured,
-		title: item.title,
-		href: `/collection/${item.slug}`
-	}))}
-/>
+<ImageGrid>
+	{#each data.categoryData.projects as project}
+		<ImageGridItem title={project.title} href={`/collection/${project.slug}`}>
+			<ResponsiveImage
+				image={project.featured}
+				alt={project.title}
+				sizes="25vw"
+				enforcedAspect={0.8}
+			/>
+		</ImageGridItem>
+	{/each}
+</ImageGrid>

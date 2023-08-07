@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { SiteQuery } from '$lib/sanity/queries';
 	import { setNavCategories } from '$lib/stores';
-	import { ImageGrid } from '$components';
+	import { OverviewGrid } from '$components';
 	import Seo from '$components/Seo.svelte';
 	import ResponsivePreload from '$components/ResponsiveImage/ResponsivePreload.svelte';
 
@@ -12,11 +12,9 @@
 
 <Seo title={null} />
 
-<ImageGrid
-	enableJump
+<OverviewGrid
 	items={data.overview.map((item) => ({
 		image: item,
-		title: null,
 		href: '/collection/overview'
 	}))}
 />
