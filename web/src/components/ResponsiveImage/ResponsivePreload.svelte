@@ -13,10 +13,12 @@
 	$: srcset = getSrcset(image, { quality, enforcedAspect });
 </script>
 
-<link
-	rel="preload"
-	as="image/webp"
-	href={urlFor(image).url()}
-	imagesrcset={srcset}
-	imagesizes={sizes}
-/>
+<svelte:head>
+	<link
+		rel="preload"
+		as="image"
+		href={urlFor(image).url()}
+		imagesrcset={srcset}
+		imagesizes={sizes}
+	/>
+</svelte:head>
