@@ -15,7 +15,7 @@
 
 <link
 	rel="preload"
-	as="image"
+	as="image/webp"
 	href={urlFor(image).url()}
 	imagesrcset={srcset}
 	imagesizes={sizes}
