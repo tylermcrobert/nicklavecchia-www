@@ -20,7 +20,7 @@
 	{#each data.items as { handle, title, images }}
 		<ImageGridItem {title} href={`/fine-art/${handle}`}>
 			<img
-				src={images[0].src}
+				src={`${images[0].src}&width=960`}
 				alt={title}
 				style:aspect-ratio={getShopifyAspect(images[0])}
 			/>
