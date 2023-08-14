@@ -1,5 +1,7 @@
 export const MODAL_ROUTES = ['/fine-art/[slug]', '/collection/[slug]'];
 
+export const IMAGE_COLLECTION_IMGS_SIZES = '50vh';
+
 export const duration = {
 	short: 0.4,
 	medium: 0.6,

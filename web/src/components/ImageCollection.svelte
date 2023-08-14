@@ -3,6 +3,7 @@
 	import { isTouchEvent } from '$lib/util/isTouchEvent';
 	import { onMount } from 'svelte';
 	import type { SanityImage } from './ResponsiveImage/utils/types';
+	import { IMAGE_COLLECTION_IMGS_SIZES } from '../constants';
 
 	export let images: SanityImage[];
 
@@ -115,7 +116,11 @@
 		on:blur={handleDragEnd}
 	>
 		{#each [...images, ...images] as image}
-			<ResponsiveImage {image} sizes="50vh" alt="Nick LaVecchia" />
+			<ResponsiveImage
+				{image}
+				sizes={IMAGE_COLLECTION_IMGS_SIZES}
+				alt="Nick LaVecchia"
+			/>
 		{/each}
 	</div>
 </div>

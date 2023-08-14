@@ -4,6 +4,7 @@
 	import { OverviewGrid } from '$components';
 	import Seo from '$components/Seo.svelte';
 	import ResponsivePreload from '$components/ResponsiveImage/ResponsivePreload.svelte';
+	import { IMAGE_COLLECTION_IMGS_SIZES } from '../constants';
 
 	export let data: SiteQuery;
 
@@ -20,5 +21,5 @@
 />
 
 {#each data.overview as overviewImg}
-	<ResponsivePreload image={overviewImg} sizes="50vw" />
+	<ResponsivePreload image={overviewImg} sizes={IMAGE_COLLECTION_IMGS_SIZES} />
 {/each}
