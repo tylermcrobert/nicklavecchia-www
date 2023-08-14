@@ -25,7 +25,12 @@
 	<div class="info">
 		<div class="text-large">
 			<h1>{title}</h1>
-			<button class="expand" on:click={toggleDesc} on:keydown={toggleDesc}>
+			<button
+				class="expand"
+				on:click={toggleDesc}
+				on:keydown={toggleDesc}
+				aria-expanded={isDescOpen}
+			>
 				{isDescOpen ? '－' : '＋'} Description
 			</button>
 			<div>
