@@ -20,17 +20,21 @@
 	<div class="text-large">
 		<PortableText value={data.info.bio} />
 	</div>
+
 	<div class="cols">
 		<div class="col">
 			<h2>Clients</h2>
+
 			<ul class="text-large">
 				{#each data.info.clients as client}
 					<li>{client}</li>
 				{/each}
 			</ul>
 		</div>
+
 		<div class="col">
 			<h2>Contact</h2>
+
 			<ul class="text-large">
 				{#each data.info.contactMethods as { label, value, url }}
 					<a href={url} target="blank">
