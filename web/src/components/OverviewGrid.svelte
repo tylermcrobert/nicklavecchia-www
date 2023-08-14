@@ -46,6 +46,7 @@
 
 			:global(img) {
 				height: 100%;
+				width: auto;
 			}
 		}
 	}
