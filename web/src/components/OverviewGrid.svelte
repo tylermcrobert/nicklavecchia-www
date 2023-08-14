@@ -24,20 +24,29 @@
 </div>
 
 <style lang="scss">
+	@import '../styles/mixins';
+
 	.imageGrid {
 		gap: var(--space-standard);
 		padding: var(--space-standard);
 		padding-top: var(--space-large);
 
-		display: flex;
-		flex-wrap: wrap;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		align-items: flex-end;
 
-		:global(img) {
-			display: inline-block;
-			vertical-align: top;
+		@include min-width('tablet') {
+			display: flex;
+			flex-wrap: wrap;
 
-			height: 10vw;
-			width: auto;
+			.gridItem {
+				height: 12vw;
+				width: auto;
+			}
+
+			:global(img) {
+				height: 100%;
+			}
 		}
 	}
 </style>
