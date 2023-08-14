@@ -10,38 +10,40 @@
 
 <Seo title="About" />
 
-<div class="images">
-	{#each data.aboutImages as image}
-		<ResponsiveImage {image} alt="Nick LaVecchia" sizes="50vw" />
-	{/each}
-</div>
-
-<div class="about-main">
-	<div class="text-large">
-		<PortableText value={data.info.bio} />
+<div class="about-wrapper">
+	<div class="images">
+		{#each data.aboutImages as image}
+			<ResponsiveImage {image} alt="Nick LaVecchia" sizes="50vw" />
+		{/each}
 	</div>
 
-	<div class="cols">
-		<div class="col">
-			<h2>Clients</h2>
-
-			<ul class="text-large">
-				{#each data.info.clients as client}
-					<li>{client}</li>
-				{/each}
-			</ul>
+	<div class="about-main">
+		<div class="text-large">
+			<PortableText value={data.info.bio} />
 		</div>
 
-		<div class="col">
-			<h2>Contact</h2>
+		<div class="cols">
+			<div class="col">
+				<h2>Clients</h2>
 
-			<ul class="text-large">
-				{#each data.info.contactMethods as { label, value, url }}
-					<a href={url} target="blank">
-						<li>{label} → {value}</li>
-					</a>
-				{/each}
-			</ul>
+				<ul class="text-large">
+					{#each data.info.clients as client}
+						<li>{client}</li>
+					{/each}
+				</ul>
+			</div>
+
+			<div class="col">
+				<h2>Contact</h2>
+
+				<ul class="text-large">
+					{#each data.info.contactMethods as { label, value, url }}
+						<a href={url} target="blank">
+							<li>{label} → {value}</li>
+						</a>
+					{/each}
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>
