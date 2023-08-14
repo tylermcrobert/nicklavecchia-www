@@ -6,8 +6,10 @@
 		: 'NICK LAVECCHIA';
 </script>
 
-<title>{derrivedTitle}</title>
-<meta
-	name="description"
-	content="Nick LaVecchia is a commercial and fine art photographer based along the beautiful coast of Maine."
-/>
+<svelte:head>
+	<title>{derrivedTitle}</title>
+	<meta
+		name="description"
+		content="Nick LaVecchia is a commercial and fine art photographer based along the beautiful coast of Maine."
+	/>
+</svelte:head>
