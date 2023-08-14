@@ -17,7 +17,7 @@
 		{/each}
 	</div>
 
-	<div class="about-main">
+	<div class="text">
 		<div class="text-large">
 			<PortableText value={data.info.bio} />
 		</div>
@@ -49,51 +49,65 @@
 </div>
 
 <style lang="scss">
-	.images {
-		width: 100%;
+	@import '../../styles/mixins';
 
+	.about-wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-large);
+
+		padding-top: var(--size-large);
+		padding: var(--space-standard);
+	}
+
+	.images {
 		display: flex;
 		gap: var(--space-standard);
-		padding: 0 var(--space-standard);
-		margin-top: var(--space-large);
 
+		width: 100%;
 		overflow-x: scroll;
-		scroll-snap-type: x mandatory;
-		scroll-padding: var(--space-standard);
 
 		&::-webkit-scrollbar {
 			display: none;
 		}
-
-		:global(img) {
-			scroll-snap-align: start;
-
-			height: 50vh;
-			width: auto;
-		}
 	}
 
-	.about-main {
-		padding: var(--space-large) var(--space-standard);
+	h2 {
+		margin-bottom: var(--space-standard);
+	}
 
-		.cols {
-			display: flex;
+	.col {
+		margin-bottom: var(--space-large);
+	}
 
-			.col {
-				flex: 1;
+	@include max-width('tablet') {
+		.images {
+			margin: 0 calc(var(--space-standard) * -1);
+			width: calc(100% + (var(--space-standard) * 2));
+			padding: 0 var(--space-standard);
 
-				h2 {
-					margin-bottom: var(--space-standard);
-				}
+			:global(img) {
+				height: 50vw;
+				width: auto;
 			}
 		}
 	}
 
-	.text-large {
-		line-height: 1.5;
+	@include min-width('tablet') {
+		.cols {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+		}
+	}
 
-		:global(p) {
-			margin-bottom: 1rem;
+	@include min-width('laptop') {
+		.images {
+			flex-direction: column;
+		}
+
+		.about-wrapper {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
 		}
 	}
 </style>
