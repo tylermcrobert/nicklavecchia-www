@@ -52,27 +52,40 @@
 	</div>
 </div>
 
-<style type="scss">
+<style lang="scss">
+	@import '../../../styles/mixins';
+
 	.wrapper {
-		margin: 0 auto;
-
-		display: flex;
-		flex-direction: row-reverse;
-
-		/* TODO - make indent width at large size  */
-		gap: 10%;
-		padding: 0 10%;
+		padding: var(--space-standard);
 		padding-top: var(--space-large);
+
+		@include min-width('tablet') {
+			display: flex;
+			flex-direction: row-reverse;
+			gap: 10%;
+
+			padding: 0 10%;
+			padding-top: inherit;
+		}
+	}
+
+	.info,
+	.images {
+		flex: 1;
 	}
 
 	.info {
 		width: 100%;
 		max-width: 25em;
 		line-height: 1.5;
+
+		@include max-width('tablet') {
+			margin-bottom: var(--space-large);
+		}
 	}
 
 	.desc {
-		padding-top: 1rem;
+		padding-top: var(--space-large);
 	}
 
 	img {
