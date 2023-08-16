@@ -24,45 +24,43 @@
 
 <Seo title="About" />
 
-<div class="about-outer">
-	<div class="about-wrapper">
-		<div class="images" bind:this={swiperEl}>
-			<div class="swiper-wrapper">
-				{#each data.aboutImages as image}
-					<div class="swiper-slide">
-						<ResponsiveImage {image} alt="Nick LaVecchia" sizes="50vw" />
-					</div>
-				{/each}
-			</div>
+<div class="about-wrapper">
+	<div class="images" bind:this={swiperEl}>
+		<div class="swiper-wrapper">
+			{#each data.aboutImages as image}
+				<div class="swiper-slide">
+					<ResponsiveImage {image} alt="Nick LaVecchia" sizes="50vw" />
+				</div>
+			{/each}
+		</div>
+	</div>
+
+	<div class="about-text">
+		<div class="text-large">
+			<PortableText value={data.info.bio} />
 		</div>
 
-		<div class="about-text">
-			<div class="text-large">
-				<PortableText value={data.info.bio} />
+		<div class="cols">
+			<div class="col">
+				<h2>Clients</h2>
+
+				<ul class="text-large">
+					{#each data.info.clients as client}
+						<li>{client}</li>
+					{/each}
+				</ul>
 			</div>
 
-			<div class="cols">
-				<div class="col">
-					<h2>Clients</h2>
+			<div class="col">
+				<h2>Contact</h2>
 
-					<ul class="text-large">
-						{#each data.info.clients as client}
-							<li>{client}</li>
-						{/each}
-					</ul>
-				</div>
-
-				<div class="col">
-					<h2>Contact</h2>
-
-					<ul class="text-large">
-						{#each data.info.contactMethods as { label, value, url }}
-							<a href={url} target="blank">
-								<li>{label} → {value}</li>
-							</a>
-						{/each}
-					</ul>
-				</div>
+				<ul class="text-large">
+					{#each data.info.contactMethods as { label, value, url }}
+						<a href={url} target="blank">
+							<li>{label} → {value}</li>
+						</a>
+					{/each}
+				</ul>
 			</div>
 		</div>
 	</div>
@@ -71,20 +69,19 @@
 <style lang="scss">
 	@import '../../styles/mixins';
 
-	.about-outer {
-		overflow-x: hidden;
+	.about-wrapper {
+		overflow: hidden;
 	}
 
-	.about-wrapper {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-large);
-
-		padding-top: var(--size-large);
-		padding: var(--space-standard);
-
-		max-width: 80rem;
+	.about-text {
+		max-width: 55rem;
 		margin: 0 auto;
+		padding: 0 var(--space-standard);
+	}
+
+	.images {
+		margin: var(--space-standard);
+		margin-bottom: var(--space-x-large);
 	}
 
 	.swiper-slide {
@@ -103,12 +100,12 @@
 
 	.col {
 		margin-bottom: var(--space-large);
+		flex: 1;
+		min-width: 20rem;
 	}
 
-	@include min-width('tablet') {
-		.cols {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-		}
+	.cols {
+		display: flex;
+		flex-wrap: wrap;
 	}
 </style>
