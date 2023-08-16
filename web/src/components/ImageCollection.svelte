@@ -7,7 +7,8 @@
 
 	export let images: SanityImage[];
 
-	const FRICTION = 0.96;
+	const FRICTION = 0.97;
+	const WHEEL_FRICTION = 2.5;
 	const MOVE_SPEED = 0.1;
 
 	let imgs: HTMLElement;
@@ -72,7 +73,7 @@
 	 */
 
 	function handleWheel(e: WheelEvent) {
-		inertia = e.deltaY + e.deltaX;
+		inertia = (e.deltaY + e.deltaX) / WHEEL_FRICTION;
 	}
 
 	/**
