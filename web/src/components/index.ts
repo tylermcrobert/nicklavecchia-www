@@ -8,3 +8,4 @@ export { default as Seo } from './Seo.svelte';
 export { default as PageTransition } from './PageTransition.svelte';
 export { default as ImageCollection } from './ImageCollection.svelte';
 export { default as SmoothScroll } from './SmoothScroll.svelte';
+export { default as WindowHeight } from './WindowHeight.svelte';

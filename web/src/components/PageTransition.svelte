@@ -31,7 +31,7 @@
 				delay: duration.short,
 				duration: duration.long,
 				ease: Power3.easeInOut,
-				y: '100vh'
+				y: window.innerHeight
 			};
 
 			const fadeOutCurtain = {
@@ -68,7 +68,7 @@
 		if (toModal) {
 			const initHideCurtain = { opacity: 0 };
 			const initPositionMain = {
-				y: '100vh',
+				y: window.innerHeight,
 				zIndex: 'var(--z-main-above-curtain)'
 			};
 
@@ -110,7 +110,7 @@
 		z-index: var(--z-main-below-curtain);
 
 		width: 100vw;
-		height: 100vh;
+		height: var(--window-height);
 
 		background: white;
 	}
@@ -120,7 +120,7 @@
 		top: 0;
 		left: 0;
 		width: 100vw;
-		height: 100vh;
+		height: var(--window-height);
 		opacity: 0;
 
 		background: rgba(0, 0, 0, 0.4);
