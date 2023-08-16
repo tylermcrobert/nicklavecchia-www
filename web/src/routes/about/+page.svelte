@@ -16,8 +16,7 @@
 	onMount(() => {
 		new Swiper(swiperEl, {
 			slidesPerView: 'auto',
-			grabCursor: true,
-			spaceBetween: 20
+			grabCursor: true
 		});
 	});
 </script>
@@ -86,6 +85,10 @@
 
 	.swiper-slide {
 		width: auto;
+
+		&:not(:last-child) {
+			margin-right: var(--space-standard);
+		}
 
 		:global(img) {
 			height: 60vh;
