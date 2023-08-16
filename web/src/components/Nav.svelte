@@ -2,16 +2,9 @@
 	import { gsap, Power3 } from 'gsap';
 	import { navigating, page } from '$app/stores';
 	import { navStore } from '$lib/stores';
-	import { MODAL_ROUTES, duration } from '../constants';
+	import { MODAL_ROUTES, NAV_ROUTES, duration } from '../constants';
 	import { getNavigatingType } from '$lib/util/getNavigatingType';
 	import { afterNavigate } from '$app/navigation';
-
-	/** Navigation top-level routes */
-	const ROUTES = [
-		{ display: 'Portfolio', href: '/' },
-		{ display: 'About', href: '/about' },
-		{ display: 'Fine Art', href: '/fine-art' }
-	];
 
 	/** When to refresh navigation animations */
 	export let refresh: string;
@@ -109,7 +102,7 @@
 	<!-- Right side  -->
 	{#if !isModal}
 		<ul class="links" in:animateIn out:animateOut>
-			{#each ROUTES as { display, href }}
+			{#each NAV_ROUTES as { display, href }}
 				<li>
 					<a {href} class:underline={href === $page.route.id}>
 						{display}

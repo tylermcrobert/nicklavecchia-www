@@ -8,3 +8,10 @@ export const duration = {
 	long: 1,
 	xLong: 1.4
 };
+
+/** Navigation top-level routes */
+export const NAV_ROUTES = [
+	{ display: 'Portfolio', href: '/' },
+	{ display: 'About', href: '/about' },
+	{ display: 'Fine Art', href: '/fine-art' }
+];
