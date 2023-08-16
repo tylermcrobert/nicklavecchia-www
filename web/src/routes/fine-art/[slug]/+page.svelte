@@ -62,7 +62,7 @@
 
 	.wrapper {
 		padding: var(--space-standard);
-		padding-top: var(--space-large);
+		padding-top: 0;
 
 		@include min-width('tablet') {
 			display: flex;
@@ -70,22 +70,26 @@
 			gap: 10%;
 
 			padding: 0 10%;
-			padding-top: inherit;
+			padding-top: 0;
 		}
 	}
 
 	.info,
 	.images {
 		flex: 1;
+		padding-top: var(--space-large);
 	}
 
 	.info {
 		width: 100%;
 		max-width: 25em;
-		line-height: 1.5;
 
-		@include max-width('tablet') {
-			margin-bottom: var(--space-large);
+		@include min-width('tablet') {
+			align-self: flex-start;
+
+			overflow-y: scroll;
+			position: sticky;
+			top: var(--nav-height);
 		}
 	}
 
