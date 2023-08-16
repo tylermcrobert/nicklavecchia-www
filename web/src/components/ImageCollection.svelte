@@ -127,6 +127,8 @@
 </div>
 
 <style lang="scss">
+	@import '../styles/mixins';
+
 	.imgsWrapper {
 		height: 100%;
 		width: 100%;
@@ -150,12 +152,17 @@
 		}
 
 		:global(img) {
-			height: 50%;
+			height: 35%;
 			width: auto;
-			margin-left: 5vh;
+			margin-left: 5vw;
 
 			pointer-events: none;
 			user-select: none;
+
+			@include min-width('tablet') {
+				height: 50%;
+				margin-left: 5vh;
+			}
 		}
 	}
 </style>
