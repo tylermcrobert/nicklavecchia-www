@@ -42,7 +42,13 @@
 	 * Applies to multiple elements
 	 */
 
-	function animateIn(node: HTMLElement) {
+	function animateIn(
+		node: HTMLElement,
+		options: { wrapper: boolean } = { wrapper: false }
+	) {
+		const ignoreWrapperAnim = options.wrapper && derrivedState.isLateral;
+		if (ignoreWrapperAnim) return {};
+
 		const tl = gsap.timeline();
 
 		const hideNode = { display: 'none', opacity: 0 };
@@ -75,15 +81,10 @@
 
 	<!-- Secondary area  -->
 	{#key refresh}
-		<div
-			class="secondary"
-			class:title={$navStore.title}
-			in:animateIn
-			out:animateOut
-		>
+		<div class="secondary" in:animateIn={{ wrapper: true }} out:animateOut>
 			<!-- Secondary Links -->
 			{#if $navStore.links}
-				<ul class="links">
+				<ul class="links" in:animateIn out:animateOut>
 					{#each $navStore.links as { href, name }}
 						<li>
 							<a {href} class:underline={href === $page.url.pathname}>{name}</a>
@@ -94,7 +95,7 @@
 
 			<!-- Page Title -->
 			{#if $navStore.title}
-				<h1>{$navStore.title}</h1>
+				<h1 in:animateIn out:animateOut>{$navStore.title}</h1>
 			{/if}
 		</div>
 	{/key}
