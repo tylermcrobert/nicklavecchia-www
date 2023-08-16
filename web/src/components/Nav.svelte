@@ -165,10 +165,6 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-
-			&.title {
-				display: none;
-			}
 		}
 	}
 
