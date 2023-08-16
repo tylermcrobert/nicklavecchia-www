@@ -142,7 +142,10 @@
 
 	.logo {
 		font-weight: bold;
-		width: 13em;
+
+		@include min-width('tablet') {
+			width: 13em;
+		}
 	}
 
 	.secondary {
