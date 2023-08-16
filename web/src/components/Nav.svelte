@@ -20,7 +20,10 @@
 	 * Applies to multiple elements
 	 */
 
-	function animateOut(node: HTMLElement) {
+	function animateOut(
+		node: HTMLElement,
+		options: { ignore: boolean } = { ignore: false }
+	) {
 		const tl = gsap.timeline();
 
 		const fadeOut = {
@@ -31,8 +34,10 @@
 
 		const removeNode = { display: 'none' };
 
-		tl.to(node, fadeOut);
-		tl.set(node, removeNode);
+		if (!options.ignore) {
+			tl.to(node, fadeOut);
+			tl.set(node, removeNode);
+		}
 
 		return { duration: tl.totalDuration() * 1000 };
 	}
@@ -44,11 +49,8 @@
 
 	function animateIn(
 		node: HTMLElement,
-		options: { wrapper: boolean } = { wrapper: false }
+		options: { ignore: boolean } = { ignore: false }
 	) {
-		const ignoreWrapperAnim = options.wrapper && derrivedState.isLateral;
-		if (ignoreWrapperAnim) return {};
-
 		const tl = gsap.timeline();
 
 		const hideNode = { display: 'none', opacity: 0 };
@@ -60,8 +62,10 @@
 			ease: Power3.easeIn
 		};
 
-		tl.set(node, hideNode);
-		tl.to(node, fadeIn);
+		if (!options.ignore) {
+			tl.set(node, hideNode);
+			tl.to(node, fadeIn);
+		}
 
 		return { duration: tl.totalDuration() * 1000 };
 	}
@@ -81,7 +85,11 @@
 
 	<!-- Secondary area  -->
 	{#key refresh}
-		<div class="secondary" in:animateIn={{ wrapper: true }} out:animateOut>
+		<div
+			class="secondary"
+			in:animateIn={{ ignore: derrivedState.isLateral }}
+			out:animateOut={{ ignore: derrivedState.isLateral }}
+		>
 			<!-- Secondary Links -->
 			{#if $navStore.links}
 				<ul class="links" in:animateIn out:animateOut>
