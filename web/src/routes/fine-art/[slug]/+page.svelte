@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Seo from '$components/Seo.svelte';
-	import { setTitle } from '$lib/stores';
+	import { clearNav, setTitle } from '$lib/stores';
 	/** eslint-disable svelte/no-at-html-tags */
 	import type ShopifyBuy from 'shopify-buy';
 
@@ -14,7 +14,7 @@
 		isDescOpen = !isDescOpen;
 	}
 
-	setTitle(title);
+	clearNav();
 </script>
 
 <!-- eslint-disable svelte/no-at-html-tags -->

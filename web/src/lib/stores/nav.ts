@@ -10,6 +10,10 @@ export function setTitle(title: string) {
 	navStore.update(() => ({ links: null, title }));
 }
 
+export function clearNav() {
+	navStore.update(() => ({ links: null, title: null }));
+}
+
 export function setNavCategories(categories: WorkCategory[]) {
 	const otherCats = categories.map((category) => ({
 		name: category.title,
