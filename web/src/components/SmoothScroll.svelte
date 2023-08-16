@@ -21,10 +21,13 @@
 <div bind:this={wrapper} class="scrollWrap">
 	<div bind:this={content} class="content">
 		<slot />
+		<div class="bottomShim" />
 	</div>
 </div>
 
 <style lang="scss">
+	@import '../styles/mixins';
+
 	.scrollWrap {
 		overflow-y: scroll;
 		height: 100%;
@@ -37,5 +40,11 @@
 	.content {
 		height: 100%;
 		padding-top: var(--nav-height);
+	}
+
+	@include max-width('tablet') {
+		.bottomShim {
+			height: var(--nav-height);
+		}
 	}
 </style>
