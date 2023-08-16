@@ -14,7 +14,7 @@
 		isDescOpen = !isDescOpen;
 	}
 
-	setTitle(title);
+	setTitle('');
 </script>
 
 <!-- eslint-disable svelte/no-at-html-tags -->
