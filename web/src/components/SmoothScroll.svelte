@@ -1,5 +1,13 @@
+<script lang="ts" context="module">
+	type LenisContext = { resize: () => void };
+
+	export function getLenisContext(): LenisContext {
+		return getContext('lenisCtx');
+	}
+</script>
+
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { getContext, onMount, setContext, tick } from 'svelte';
 	import Lenis from '@studio-freight/lenis';
 
 	let lenis: Lenis;
@@ -15,6 +23,13 @@
 		}
 
 		requestAnimationFrame(raf);
+	});
+
+	setContext<LenisContext>('lenisCtx', {
+		resize: async () => {
+			await tick();
+			lenis.resize();
+		}
 	});
 </script>
 

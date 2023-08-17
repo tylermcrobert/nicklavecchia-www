@@ -1,9 +1,12 @@
 <script lang="ts">
 	import { Seo } from '$components';
 	import Select from '$components/Select.svelte';
+	import { getLenisContext } from '$components/SmoothScroll.svelte';
 	import { Plus, ArrowNE } from '$components/icons';
 	import { clearNav } from '$lib/stores';
 	import type ShopifyBuy from 'shopify-buy';
+
+	const lenis = getLenisContext();
 
 	export let data: { product: ShopifyBuy.Product };
 
@@ -16,6 +19,7 @@
 
 	function toggleDesc() {
 		isDescOpen = !isDescOpen;
+		lenis.resize();
 	}
 
 	clearNav();
