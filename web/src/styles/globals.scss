@@ -35,11 +35,15 @@ button {
 	cursor: pointer;
 }
 
+// Underlines text with 1px thickness
+
 .underline {
 	text-decoration: underline;
 	text-underline-offset: 4px;
 	text-decoration-thickness: 1px;
 }
+
+// Sets text to be paragraph size and leading
 
 .text-large {
 	font-size: 16px;
@@ -52,6 +56,8 @@ button {
 		margin-bottom: 1rem;
 	}
 }
+
+// Formats text without changing size
 
 .text-para {
 	text-transform: initial;
