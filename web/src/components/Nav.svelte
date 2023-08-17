@@ -12,6 +12,7 @@
 	let prevRoute: string | null = '/';
 
 	$: isModal = MODAL_ROUTES.includes($page.route.id || '');
+	$: scrimRefresh = isModal.toString();
 	$: isLateral = getNavigatingType($navigating).lateral;
 	$: isSecondaryEmpty = !$navStore.links && !$navStore.title;
 
@@ -76,7 +77,7 @@
 	<!-- Secondary area  -->
 
 	<div class="secondary" class:hidden={isSecondaryEmpty}>
-		{#key refresh}
+		{#key scrimRefresh}
 			<div class="scrim" in:animateIn out:animateOut />
 		{/key}
 
@@ -119,7 +120,7 @@
 		</a>
 	{/if}
 
-	{#key refresh}
+	{#key scrimRefresh}
 		<div class="scrim" in:animateIn out:animateOut />
 	{/key}
 </nav>
