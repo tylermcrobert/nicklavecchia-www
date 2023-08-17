@@ -22,10 +22,7 @@
 	 * NOTE: Applies to multiple elements
 	 */
 
-	function animateOut(
-		node: HTMLElement,
-		options: { ignore: boolean } = { ignore: false }
-	) {
+	function animateOut(node: HTMLElement) {
 		const tl = gsap.timeline();
 
 		const fadeOut = {
@@ -36,10 +33,8 @@
 
 		const removeNode = { display: 'none' };
 
-		if (!options.ignore) {
-			tl.to(node, fadeOut);
-			tl.set(node, removeNode);
-		}
+		tl.to(node, fadeOut);
+		tl.set(node, removeNode);
 
 		return { duration: tl.totalDuration() * 1000 };
 	}
@@ -49,25 +44,20 @@
 	 * NOTE: Applies to multiple elements
 	 */
 
-	function animateIn(
-		node: HTMLElement,
-		options: { ignore: boolean } = { ignore: false }
-	) {
+	function animateIn(node: HTMLElement) {
 		const tl = gsap.timeline();
 
 		const hideNode = { display: 'none', opacity: 0 };
 		const fadeIn = {
-			delay: derivedState.isLateral ? duration.medium : duration.long,
+			delay: derivedState.isLateral ? duration.medium : duration.xLong,
 			duration: duration.short,
 			display: 'flex',
 			opacity: 1,
 			ease: Power3.easeIn
 		};
 
-		if (!options.ignore) {
-			tl.set(node, hideNode);
-			tl.to(node, fadeIn);
-		}
+		tl.set(node, hideNode);
+		tl.to(node, fadeIn);
 
 		return { duration: tl.totalDuration() * 1000 };
 	}
@@ -86,13 +76,13 @@
 	</div>
 
 	<!-- Secondary area  -->
-	{#key refresh}
-		<div
-			class="secondary"
-			class:hidden={derivedState.isSecondaryEmpty}
-			in:animateIn={{ ignore: derivedState.isLateral }}
-			out:animateOut={{ ignore: derivedState.isLateral }}
-		>
+
+	<div class="secondary" class:hidden={derivedState.isSecondaryEmpty}>
+		{#key refresh}
+			<div class="scrim" in:animateIn out:animateOut />
+		{/key}
+
+		{#key refresh}
 			<!-- Secondary Links -->
 			{#if $navStore.links}
 				<ul class="links" in:animateIn out:animateOut>
@@ -108,8 +98,8 @@
 			{#if $navStore.title}
 				<h1 in:animateIn out:animateOut>{$navStore.title}</h1>
 			{/if}
-		</div>
-	{/key}
+		{/key}
+	</div>
 
 	<!-- Right side  -->
 	{#if !derivedState.isModal}
@@ -128,10 +118,24 @@
 			<Close /> Close
 		</a>
 	{/if}
+
+	{#key refresh}
+		<div class="scrim" in:animateIn out:animateOut />
+	{/key}
 </nav>
 
 <style lang="scss">
 	@import '../styles/mixins';
+
+	.scrim {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background: white;
+		z-index: -1;
+	}
 
 	.nav {
 		position: fixed;
@@ -168,7 +172,6 @@
 			left: 0;
 
 			width: 100%;
-			background: white;
 			height: var(--nav-height);
 
 			display: flex;
