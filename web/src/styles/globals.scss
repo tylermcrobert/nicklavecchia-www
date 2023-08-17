@@ -67,3 +67,11 @@ button {
 		margin-bottom: 1em;
 	}
 }
+
+// Positions an icon with text with built in padding
+
+.iconText {
+	display: flex;
+	align-items: center;
+	gap: 0.25em;
+}

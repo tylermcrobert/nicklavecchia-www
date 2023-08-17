@@ -5,6 +5,7 @@
 	import { MODAL_ROUTES, NAV_ROUTES, duration } from '../constants';
 	import { getNavigatingType } from '$lib/util/getNavigatingType';
 	import { afterNavigate } from '$app/navigation';
+	import { Close } from './icons';
 
 	/** When to refresh navigation animations */
 	export let refresh: string;
@@ -121,7 +122,9 @@
 		</ul>
 	{:else}
 		<!-- Close button (For modal) -->
-		<a in:animateIn out:animateOut href={prevRoute}>✕ Close</a>
+		<a in:animateIn out:animateOut class="iconText close" href={prevRoute}>
+			<Close /> Close
+		</a>
 	{/if}
 </nav>
 
@@ -175,5 +178,15 @@
 		/* Fix bugs with underlines flashing */
 		position: relative;
 		transform: translate3d(0, 0, 0);
+	}
+
+	.close {
+		:global(svg) {
+			position: relative;
+			top: -0.5px;
+		}
+		:global(path) {
+			stroke-width: 1.25px;
+		}
 	}
 </style>

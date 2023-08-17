@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Seo } from '$components';
+	import { ChevronDown, Plus, ArrowNE } from '$components/icons';
 	import { clearNav } from '$lib/stores';
 	import type ShopifyBuy from 'shopify-buy';
 
@@ -37,24 +38,26 @@
 						</option>
 					{/each}
 				</select>
+
+				<ChevronDown />
 			</div>
 
 			<button
-				class="expand"
+				class="expand iconText"
 				on:click={toggleDesc}
 				on:keydown={toggleDesc}
 				aria-expanded={isDescOpen}
 			>
-				{isDescOpen ? '－' : '＋'} Description
+				<Plus /> Description
 			</button>
 			<div>
 				<a
 					href={`mailto:nick@nicklavecchia.com?subject=${subjectLine}`}
 					target="_blank"
 					rel="noreferrer"
-					class="underline"
+					class="underline iconText"
 				>
-					Contact for Print &nearr;
+					Contact for Print <ArrowNE />
 				</a>
 			</div>
 		</div>
