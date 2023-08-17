@@ -13,7 +13,8 @@
 
 	$: derivedState = {
 		isModal: MODAL_ROUTES.includes($page.route.id || ''),
-		isLateral: getNavigatingType($navigating).lateral
+		isLateral: getNavigatingType($navigating).lateral,
+		isSecondaryEmpty: !$navStore.links && !$navStore.title
 	};
 
 	/**
@@ -88,6 +89,7 @@
 	{#key refresh}
 		<div
 			class="secondary"
+			class:hidden={derivedState.isSecondaryEmpty}
 			in:animateIn={{ ignore: derivedState.isLateral }}
 			out:animateOut={{ ignore: derivedState.isLateral }}
 		>
@@ -155,6 +157,10 @@
 
 	.secondary {
 		flex: 1;
+
+		&.hidden {
+			opacity: 0;
+		}
 
 		@include max-width('tablet') {
 			position: fixed;
