@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Seo } from '$components';
-	import { ChevronDown, Plus, ArrowNE } from '$components/icons';
+	import Select from '$components/Select.svelte';
+	import { Plus, ArrowNE } from '$components/icons';
 	import { clearNav } from '$lib/stores';
 	import type ShopifyBuy from 'shopify-buy';
 
@@ -17,8 +18,6 @@
 		isDescOpen = !isDescOpen;
 	}
 
-	$: console.log(data.product);
-
 	clearNav();
 </script>
 
@@ -29,23 +28,11 @@
 		<div class="text-large">
 			<h1>{title}</h1>
 
-			<div class="selectWrap">
-				<div class="iconText">
-					{currentVariant}
-					<ChevronDown />
-				</div>
-
-				<select
-					value={currentVariant}
-					on:change={(e) => (currentVariant = e.currentTarget.value)}
-				>
-					{#each variantTitles as title}
-						<option value={title}>
-							{title}
-						</option>
-					{/each}
-				</select>
-			</div>
+			<Select
+				options={variantTitles}
+				currentOption={currentVariant}
+				onSelectChange={(val) => (currentVariant = val)}
+			/>
 
 			<button
 				class="expand iconText"
@@ -83,16 +70,6 @@
 <style lang="scss">
 	@import '../../../styles/mixins';
 
-	.selectWrap {
-		position: relative;
-
-		select {
-			position: absolute;
-			top: 0;
-			width: 100%;
-			opacity: 0;
-		}
-	}
 	.wrapper {
 		padding: var(--space-standard);
 		padding-top: 0;
