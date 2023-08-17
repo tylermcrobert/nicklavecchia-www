@@ -1,12 +1,9 @@
 <script lang="ts">
-	import Seo from '$components/Seo.svelte';
+	import { Seo } from '$components';
 	import { clearNav } from '$lib/stores';
-	/** eslint-disable svelte/no-at-html-tags */
 	import type ShopifyBuy from 'shopify-buy';
 
 	export let data: { product: ShopifyBuy.Product };
-	const { images, descriptionHtml, title } = data.product;
-	const subjectLine = `Purchase Inquiry – ${title}`;
 
 	let isDescOpen = false;
 
@@ -15,9 +12,10 @@
 	}
 
 	clearNav();
-</script>
 
-<!-- eslint-disable svelte/no-at-html-tags -->
+	$: ({ images, descriptionHtml, title } = data.product);
+	$: subjectLine = `Purchase Inquiry – ${title}`;
+</script>
 
 <Seo {title} />
 
@@ -46,6 +44,7 @@
 		</div>
 
 		{#if isDescOpen}
+			<!-- eslint-disable svelte/no-at-html-tags -->
 			<div class="text-para desc">{@html descriptionHtml}</div>
 		{/if}
 	</div>
