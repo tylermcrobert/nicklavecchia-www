@@ -83,21 +83,23 @@
 		{/key}
 
 		{#key refresh}
-			<!-- Secondary Links -->
-			{#if $navStore.links}
-				<ul class="links" in:animateIn out:animateOut>
-					{#each $navStore.links as { href, name }}
-						<li>
-							<a {href} class:underline={href === $page.url.pathname}>{name}</a>
-						</li>
-					{/each}
-				</ul>
-			{/if}
+			<div class="secondaryInner" in:animateIn out:animateOut>
+				{#if $navStore.links}
+					<ul class="links">
+						{#each $navStore.links as { href, name }}
+							<li>
+								<a {href} class:underline={href === $page.url.pathname}>
+									{name}
+								</a>
+							</li>
+						{/each}
+					</ul>
+				{/if}
 
-			<!-- Page Title -->
-			{#if $navStore.title}
-				<h1 in:animateIn out:animateOut>{$navStore.title}</h1>
-			{/if}
+				{#if $navStore.title}
+					<h1>{$navStore.title}</h1>
+				{/if}
+			</div>
 		{/key}
 	</div>
 
