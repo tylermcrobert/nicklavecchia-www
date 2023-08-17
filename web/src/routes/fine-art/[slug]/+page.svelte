@@ -17,6 +17,8 @@
 		isDescOpen = !isDescOpen;
 	}
 
+	$: console.log(data.product);
+
 	clearNav();
 </script>
 
@@ -27,7 +29,12 @@
 		<div class="text-large">
 			<h1>{title}</h1>
 
-			<div class="iconText">
+			<div class="selectWrap">
+				<div class="iconText">
+					{currentVariant}
+					<ChevronDown />
+				</div>
+
 				<select
 					value={currentVariant}
 					on:change={(e) => (currentVariant = e.currentTarget.value)}
@@ -38,8 +45,6 @@
 						</option>
 					{/each}
 				</select>
-
-				<ChevronDown />
 			</div>
 
 			<button
@@ -78,6 +83,16 @@
 <style lang="scss">
 	@import '../../../styles/mixins';
 
+	.selectWrap {
+		position: relative;
+
+		select {
+			position: absolute;
+			top: 0;
+			width: 100%;
+			opacity: 0;
+		}
+	}
 	.wrapper {
 		padding: var(--space-standard);
 		padding-top: 0;
