@@ -82,14 +82,6 @@
 	.info {
 		width: 100%;
 		max-width: 25em;
-
-		@include min-width('tablet') {
-			align-self: flex-start;
-
-			overflow-y: scroll;
-			position: sticky;
-			top: var(--nav-height);
-		}
 	}
 
 	.desc {
