@@ -9,7 +9,7 @@
 
 	$: ({ images, descriptionHtml, title, variants } = data.product);
 	$: variantTitles = variants.map((item) => item.title);
-	$: subjectLine = `Purchase Inquiry – ${title}`;
+	$: subjectLine = `Purchase Inquiry – ${title} (${currentVariant})`;
 
 	let isDescOpen = false;
 	$: currentVariant = variantTitles[0];
