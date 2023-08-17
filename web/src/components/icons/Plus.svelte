@@ -5,6 +5,6 @@
 	fill="none"
 	xmlns="http://www.w3.org/2000/svg"
 >
-	<path d="M6 1V11" stroke="#282E3C" stroke-width="1.5" />
-	<path d="M11 6L1 6" stroke="#282E3C" stroke-width="1.5" />
+	<path d="M6 1V11" stroke="var(--color-text)" stroke-width="1.5" />
+	<path d="M11 6L1 6" stroke="var(--color-text)" stroke-width="1.5" />
 </svg>
