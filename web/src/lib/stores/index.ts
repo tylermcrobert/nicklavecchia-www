@@ -1,2 +1,2 @@
-export * from './nav';
+export * from './navStore';
 export * from './collectionIndexJump';
