@@ -19,7 +19,7 @@
 
 	/**
 	 * Fade element out.
-	 * Applies to multiple elements
+	 * NOTE: Applies to multiple elements
 	 */
 
 	function animateOut(
@@ -46,7 +46,7 @@
 
 	/**
 	 * Fade element in.
-	 * Applies to multiple elements
+	 * NOTE: Applies to multiple elements
 	 */
 
 	function animateIn(
