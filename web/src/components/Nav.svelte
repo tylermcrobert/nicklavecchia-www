@@ -11,7 +11,7 @@
 	export let refresh: string;
 	let prevRoute: string | null = '/';
 
-	$: derrivedState = {
+	$: derivedState = {
 		isModal: MODAL_ROUTES.includes($page.route.id || ''),
 		isLateral: getNavigatingType($navigating).lateral
 	};
@@ -56,7 +56,7 @@
 
 		const hideNode = { display: 'none', opacity: 0 };
 		const fadeIn = {
-			delay: derrivedState.isLateral ? duration.medium : duration.long,
+			delay: derivedState.isLateral ? duration.medium : duration.long,
 			duration: duration.short,
 			display: 'flex',
 			opacity: 1,
@@ -81,15 +81,15 @@
 <nav class="nav">
 	<!-- Logo -->
 	<div class="logo">
-		<a href={derrivedState.isModal ? prevRoute : '/'}>Nick LaVecchia</a>
+		<a href={derivedState.isModal ? prevRoute : '/'}>Nick LaVecchia</a>
 	</div>
 
 	<!-- Secondary area  -->
 	{#key refresh}
 		<div
 			class="secondary"
-			in:animateIn={{ ignore: derrivedState.isLateral }}
-			out:animateOut={{ ignore: derrivedState.isLateral }}
+			in:animateIn={{ ignore: derivedState.isLateral }}
+			out:animateOut={{ ignore: derivedState.isLateral }}
 		>
 			<!-- Secondary Links -->
 			{#if $navStore.links}
@@ -110,7 +110,7 @@
 	{/key}
 
 	<!-- Right side  -->
-	{#if !derrivedState.isModal}
+	{#if !derivedState.isModal}
 		<ul class="links" in:animateIn out:animateOut>
 			{#each NAV_ROUTES as { display, href }}
 				<li>
