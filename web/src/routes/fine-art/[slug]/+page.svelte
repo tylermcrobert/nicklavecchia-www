@@ -11,8 +11,8 @@
 	$: variantTitles = variants.map((item) => item.title);
 	$: subjectLine = `Purchase Inquiry – ${title} (${currentVariant})`;
 
-	let isDescOpen = false;
 	$: currentVariant = variantTitles[0];
+	let isDescOpen = false;
 
 	function toggleDesc() {
 		isDescOpen = !isDescOpen;
