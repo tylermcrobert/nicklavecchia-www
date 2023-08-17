@@ -5,16 +5,18 @@
 
 	export let data: { product: ShopifyBuy.Product };
 
+	$: ({ images, descriptionHtml, title, variants } = data.product);
+	$: variantTitles = variants.map((item) => item.title);
+	$: subjectLine = `Purchase Inquiry – ${title}`;
+
 	let isDescOpen = false;
+	$: currentVariant = variantTitles[0];
 
 	function toggleDesc() {
 		isDescOpen = !isDescOpen;
 	}
 
 	clearNav();
-
-	$: ({ images, descriptionHtml, title } = data.product);
-	$: subjectLine = `Purchase Inquiry – ${title}`;
 </script>
 
 <Seo {title} />
@@ -23,6 +25,20 @@
 	<div class="info">
 		<div class="text-large">
 			<h1>{title}</h1>
+
+			<div class="iconText">
+				<select
+					value={currentVariant}
+					on:change={(e) => (currentVariant = e.currentTarget.value)}
+				>
+					{#each variantTitles as title}
+						<option value={title}>
+							{title}
+						</option>
+					{/each}
+				</select>
+			</div>
+
 			<button
 				class="expand"
 				on:click={toggleDesc}
