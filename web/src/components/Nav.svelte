@@ -84,7 +84,7 @@
 		{#key refresh}
 			<div class="secondaryInner" in:animateIn out:animateOut>
 				{#if $navStore.links}
-					<ul class="links">
+					<ul class="links main">
 						{#each $navStore.links as { href, name }}
 							<li>
 								<a {href} class:underline={href === $page.url.pathname}>
@@ -188,6 +188,12 @@
 		/* Fix bugs with underlines flashing */
 		position: relative;
 		transform: translate3d(0, 0, 0);
+	}
+
+	.links.main {
+		@include min-width('desktop-lg') {
+			display: none;
+		}
 	}
 
 	.close {
