@@ -81,7 +81,9 @@
 
 			const fadeInCurtain = {
 				duration: duration.long,
-				delay: 0,
+
+				// load in after scrim fades out
+				delay: 0.1,
 				opacity: 1
 			};
 
