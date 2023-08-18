@@ -136,6 +136,7 @@
 		height: 100%;
 		background: white;
 		z-index: -1;
+		pointer-events: none;
 	}
 
 	.nav {
