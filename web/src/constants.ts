@@ -6,7 +6,7 @@ export const duration = {
 	short: 0.4,
 	medium: 0.6,
 	long: 1,
-	xLong: 1.4
+	xLong: 1.2
 };
 
 /** Navigation top-level routes */
