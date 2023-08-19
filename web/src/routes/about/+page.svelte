@@ -72,6 +72,10 @@
 		overflow: hidden;
 	}
 
+	.text-large {
+		margin-bottom: var(--space-large);
+	}
+
 	.about-text {
 		max-width: 55rem;
 		margin: 0 auto;
