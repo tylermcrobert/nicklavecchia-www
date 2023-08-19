@@ -157,7 +157,7 @@
 		}
 
 		:global(img) {
-			height: 35%;
+			height: 60vw;
 			width: auto;
 			margin-left: 5vw;
 
