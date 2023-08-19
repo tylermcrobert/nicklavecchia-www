@@ -7,10 +7,22 @@
 
 	setTitle('Editions');
 
-	function getShopifyAspect(image: ShopifyBuy.Image) {
-		if (!image.width || !image.height) return 'auto';
-		const aspect = image.width / image.height;
-		return Math.round(aspect * 100) / 100;
+	function getImgProps(image: ShopifyBuy.Image) {
+		if (!image.width || !image.height) return;
+
+		const ASPECT_LANDSCAPE = 3 / 2;
+		const ASPECT_PORTRAIT = 4 / 5;
+
+		const isLandscape = image.width > image.height;
+		const aspect = isLandscape ? ASPECT_LANDSCAPE : ASPECT_PORTRAIT;
+
+		const width = 960;
+		const height = width / aspect;
+
+		return {
+			src: `${image.src}&width=${width}&height=${height}&crop=center`,
+			style: `aspect-ratio: ${aspect}`
+		};
 	}
 </script>
 
@@ -19,11 +31,7 @@
 <ImageGrid>
 	{#each data.items as { handle, title, images }}
 		<ImageGridItem {title} href={`/fine-art/${handle}`}>
-			<img
-				src={`${images[0].src}&width=960`}
-				alt={title}
-				style:aspect-ratio={getShopifyAspect(images[0])}
-			/>
+			<img {...getImgProps(images[0])} alt={title} />
 		</ImageGridItem>
 	{/each}
 </ImageGrid>
