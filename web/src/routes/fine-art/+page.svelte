@@ -7,7 +7,7 @@
 
 	setTitle('Editions');
 
-	function getImgProps(image: ShopifyBuy.Image) {
+	function getShopifyImageProps(image: ShopifyBuy.Image) {
 		if (!image.width || !image.height) return;
 
 		const ASPECT_LANDSCAPE = 3 / 2;
@@ -31,7 +31,7 @@
 <ImageGrid>
 	{#each data.items as { handle, title, images }}
 		<ImageGridItem {title} href={`/fine-art/${handle}`}>
-			<img {...getImgProps(images[0])} alt={title} />
+			<img {...getShopifyImageProps(images[0])} alt={title} />
 		</ImageGridItem>
 	{/each}
 </ImageGrid>
