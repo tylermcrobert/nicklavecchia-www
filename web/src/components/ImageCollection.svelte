@@ -130,7 +130,7 @@
 	@import '../styles/mixins';
 
 	.imgsWrapper {
-		height: 100%;
+		height: calc(100% - var(--nav-height));
 		width: 100%;
 		overflow: hidden;
 	}
