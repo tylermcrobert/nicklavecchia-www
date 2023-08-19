@@ -59,6 +59,9 @@
 	 */
 
 	function handlePointerMove(e: MouseEvent | TouchEvent) {
+		const isTwoFingerTouch = isTouchEvent(e) && e.touches.length >= 2;
+		if (isTwoFingerTouch) return;
+
 		e.preventDefault();
 
 		if (isDragging) {
