@@ -134,6 +134,8 @@
 
 	.imgsWrapper {
 		height: calc(100% - var(--nav-height));
+		padding-top: var(--nav-height);
+
 		width: 100%;
 		overflow: hidden;
 	}
