@@ -31,19 +31,9 @@
 <img
 	{...imgProps}
 	{alt}
-	class:loaded
+	class="responsive-image"
+	style:opacity={loaded ? '' : '0'}
 	loading="lazy"
 	bind:this={node}
 	on:load={() => (loaded = true)}
 />
-
-<style>
-	img {
-		opacity: 0;
-		transition: opacity 200ms ease-in;
-	}
-
-	.loaded {
-		opacity: 1;
-	}
-</style>
