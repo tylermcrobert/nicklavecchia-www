@@ -1,10 +1,10 @@
 import { urlFor } from '$lib/sanity/client';
-import { IMG_DEVICE_SIZES, IMG_SCALING } from './constants';
-import type { SanityImage } from './types';
+import { DEFAULT_QUALITY, IMG_DEVICE_SIZES, IMG_SCALING } from './constants';
+import type { EnforcedAspect, Quality, SanityImage } from './types';
 
 type SrcsetOptions = {
-	quality: number;
-	enforcedAspect: number | null;
+	quality: Quality;
+	enforcedAspect: EnforcedAspect;
 };
 
 /**
@@ -34,7 +34,10 @@ export default function getSrcset(
 	 */
 
 	function getUrl(width: number) {
-		let builder = urlFor(image).width(width).auto('format').quality(quality);
+		let builder = urlFor(image)
+			.width(width)
+			.auto('format')
+			.quality(quality || DEFAULT_QUALITY);
 
 		if (enforcedAspect) {
 			builder = builder.height(Math.round(width / enforcedAspect));

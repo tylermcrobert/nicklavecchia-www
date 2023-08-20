@@ -1,51 +1,39 @@
 <script lang="ts">
-	import { urlFor } from '$lib/sanity/client';
-	import type { SanityImage } from './utils/types';
-	import getImageDimensions from './utils/getImageDimensions';
+	import type {
+		Color,
+		EnforcedAspect,
+		Quality,
+		SanityImage,
+		Sizes
+	} from './utils/types';
 	import { onMount } from 'svelte';
-	import getSrcset from './utils/getSrcset';
-	import { DEFAULT_QUALITY } from './utils/constants';
+	import getImageProps from './utils/getImageProps';
 
 	export let image: SanityImage;
 	export let alt: string;
+	export let sizes: Sizes;
 
-	export let enforcedAspect: number | null = null;
-	export let sizes: string;
-	export let quality = DEFAULT_QUALITY;
-	export let color: string | undefined = undefined;
+	export let enforcedAspect: EnforcedAspect = undefined;
+	export let quality: Quality = undefined;
+	export let color: Color = undefined;
 
 	let node: HTMLImageElement;
 	let loaded = false;
 
-	$: naturalAspect = getImageDimensions(image).aspectRatio;
-
-	/**
-	 * Create an srcset for responsive image
-	 */
-
-	$: srcset = getSrcset(image, { quality, enforcedAspect });
-
-	/**
-	 * Add inline style for img
-	 */
-
-	$: getStyle = () => {
-		let styles = [];
-		if (color) styles.push(`background-color: ${color}`);
-		styles.push(`aspect-ratio: ${enforcedAspect || naturalAspect}`);
-		return styles.join('; ');
-	};
+	$: imgProps = getImageProps({
+		image,
+		quality,
+		enforcedAspect,
+		color,
+		sizes
+	});
 
 	onMount(() => (loaded = node.complete && node.naturalHeight !== 0));
 </script>
 
 <img
-	src={urlFor(image).url()}
+	{...imgProps}
 	{alt}
-	{sizes}
-	{srcset}
-	style={getStyle()}
-	class="responsiveImage"
 	class:loaded
 	loading="lazy"
 	bind:this={node}
@@ -53,7 +41,7 @@
 />
 
 <style>
-	.responsiveImage {
+	img {
 		opacity: 0;
 		object-fit: cover;
 		background-color: var(--color-img-preload-background);
