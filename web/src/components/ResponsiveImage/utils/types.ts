@@ -46,14 +46,12 @@ type Hotspot = {
 export type EnforcedAspect = number | undefined;
 export type Sizes = string;
 export type Quality = number | undefined;
-export type Color = string | undefined;
 
 export type ResponsiveImageConfig = {
 	image: SanityImage;
 	enforcedAspect: EnforcedAspect;
 	sizes: Sizes;
 	quality: Quality;
-	color: Color;
 };
 
 export type ResponsiveImageProps = {

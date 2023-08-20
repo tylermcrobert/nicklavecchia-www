@@ -7,19 +7,15 @@ export default function getImageProps({
 	image,
 	sizes,
 	quality,
-	enforcedAspect,
-	color
+	enforcedAspect
 }: ResponsiveImageConfig): ResponsiveImageProps {
-	const naturalAspect = getImageDimensions(image).aspectRatio;
-	const aspect = enforcedAspect || naturalAspect;
-
-	const bgStyle = color && `background-color: ${color}`;
-	const aspectStyle = `aspect-ratio: ${aspect}`;
+	const { aspectRatio } = getImageDimensions(image);
+	const aspect = enforcedAspect || aspectRatio;
 
 	return {
 		src: urlFor(image).url(),
 		srcset: getSrcset(image, { quality, enforcedAspect }),
 		sizes,
-		style: [bgStyle, aspectStyle].filter((a) => a).join('; ')
+		style: `aspect-ratio: ${aspect}`
 	};
 }

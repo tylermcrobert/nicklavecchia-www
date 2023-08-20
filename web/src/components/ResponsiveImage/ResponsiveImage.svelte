@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type {
-		Color,
 		EnforcedAspect,
 		Quality,
 		SanityImage,
@@ -15,7 +14,6 @@
 
 	export let enforcedAspect: EnforcedAspect = undefined;
 	export let quality: Quality = undefined;
-	export let color: Color = undefined;
 
 	let node: HTMLImageElement;
 	let loaded = false;
@@ -24,7 +22,6 @@
 		image,
 		quality,
 		enforcedAspect,
-		color,
 		sizes
 	});
 
