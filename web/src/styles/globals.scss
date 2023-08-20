@@ -75,3 +75,7 @@ button {
 	align-items: center;
 	gap: 0.25em;
 }
+
+.responsive-image {
+	transition: opacity 200ms ease-in;
+}

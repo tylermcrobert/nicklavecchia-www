@@ -1,6 +1,5 @@
 export { default as Nav } from './Nav.svelte';
 export { default as ResponsiveImage } from './ResponsiveImage/ResponsiveImage.svelte';
-export { default as ResponsivePreload } from './ResponsiveImage/ResponsivePreload.svelte';
 export { default as OverviewGrid } from './OverviewGrid.svelte';
 export { default as ImageGrid } from './ImageGrid.svelte';
 export { default as ImageGridItem } from './ImageGridItem.svelte';
