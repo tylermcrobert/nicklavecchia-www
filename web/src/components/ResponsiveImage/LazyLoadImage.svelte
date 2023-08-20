@@ -5,7 +5,6 @@
 		EnforcedAspect,
 		Quality,
 		SanityImage,
-		Color,
 		Sizes
 	} from './utils/types';
 
@@ -15,7 +14,6 @@
 
 	export let quality: Quality = undefined;
 	export let enforcedAspect: EnforcedAspect = undefined;
-	export let color: Color = undefined;
 
 	let imgNode: HTMLImageElement;
 
@@ -23,7 +21,6 @@
 		image,
 		quality,
 		enforcedAspect,
-		color,
 		sizes
 	});
 
