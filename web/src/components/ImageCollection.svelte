@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ResponsiveImage } from '$components';
+	import { LazyLoadImage } from '$components';
 	import { isTouchEvent } from '$lib/util/isTouchEvent';
 	import { onMount } from 'svelte';
 	import type { SanityImage } from './ResponsiveImage/utils/types';
@@ -119,7 +119,7 @@
 		on:blur={handleDragEnd}
 	>
 		{#each [...images, ...images] as image}
-			<ResponsiveImage {image} sizes="70vh" alt="Nick LaVecchia" />
+			<LazyLoadImage {image} sizes="70vh" alt="Nick LaVecchia" />
 		{/each}
 	</div>
 </div>

@@ -53,6 +53,7 @@
 </script>
 
 <img
+	class="responsive-image"
 	style="{imgProps.style}; opacity: 0"
 	sizes={imgProps.sizes}
 	{alt}
