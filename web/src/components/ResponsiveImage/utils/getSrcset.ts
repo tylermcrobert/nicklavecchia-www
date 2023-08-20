@@ -19,15 +19,6 @@ export default function getSrcset(
 	{ quality, enforcedAspect }: SrcsetOptions
 ) {
 	/**
-	 * Src Set
-	 *
-	 * Generates string for each device
-	 * size and joins with a comma
-	 */
-
-	const srcSet = IMG_DEVICE_SIZES.map((width) => getUrl(width)).join(', ');
-
-	/**
 	 * Get URL
 	 * @param width width of srcset size
 	 * @returns
@@ -45,6 +36,15 @@ export default function getSrcset(
 
 		return `${builder.url()} ${Math.round(width / IMG_SCALING)}w`;
 	}
+
+	/**
+	 * Src Set
+	 *
+	 * Generates string for each device
+	 * size and joins with a comma
+	 */
+
+	const srcSet = IMG_DEVICE_SIZES.map((width) => getUrl(width)).join(', ');
 
 	return srcSet;
 }
