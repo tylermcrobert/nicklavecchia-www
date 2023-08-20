@@ -165,7 +165,7 @@
 			user-select: none;
 
 			@include min-width('tablet') {
-				height: 50%;
+				height: 70%;
 				margin-left: 5vh;
 			}
 		}
