@@ -20,8 +20,8 @@
 	 * Runs on rAF
 	 */
 
-	function tick() {
-		raf = requestAnimationFrame(tick);
+	function updateImagePosition() {
+		raf = requestAnimationFrame(updateImagePosition);
 		imgs.style.transform = `translate3d(${transformX}px, 0, 0)`;
 	}
 
@@ -83,7 +83,7 @@
 
 	onMount(() => {
 		setWidth();
-		tick();
+		updateImagePosition();
 
 		return () => {
 			cancelAnimationFrame(raf);
