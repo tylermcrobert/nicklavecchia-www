@@ -6,18 +6,15 @@
 
 	export let images: SanityImage[];
 
-	const FRICTION = 0.97;
-	const WHEEL_FRICTION = 1.75;
-	const MOVE_SPEED = 0.1;
-
 	let imgs: HTMLElement;
 	let raf: number;
 
 	let isDragging = false;
-	let inertia = 0;
 	let transformX = 0;
-	let dragX = 0;
 	let width = 0;
+	let differenceX = 0;
+	let pointerX = 0;
+	let pointerXStart = 0;
 
 	/**
 	 * Runs on rAF
@@ -25,14 +22,7 @@
 
 	function tick() {
 		raf = requestAnimationFrame(tick);
-
-		transformX += inertia + MOVE_SPEED;
-		inertia *= FRICTION;
-
-		if (transformX >= width / 2) transformX = 1;
-		if (transformX < 1) transformX = width / 2;
-
-		imgs.style.transform = `translate3d(-${transformX}px, 0, 0)`;
+		imgs.style.transform = `translate3d(${transformX}px, 0, 0)`;
 	}
 
 	/**
@@ -40,9 +30,12 @@
 	 */
 
 	function handleDragStart(e: MouseEvent | TouchEvent) {
+		const pointerX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
 		setWidth();
+
 		isDragging = true;
-		dragX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
+		pointerXStart = pointerX;
+		differenceX = transformX;
 	}
 
 	/**
@@ -58,15 +51,12 @@
 	 */
 
 	function handlePointerMove(e: MouseEvent | TouchEvent) {
-		const isTwoFingerTouch = isTouchEvent(e) && e.touches.length >= 2;
-		if (isTwoFingerTouch) return;
-
 		e.preventDefault();
 
+		pointerX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
+
 		if (isDragging) {
-			const pointerX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
-			inertia = dragX - pointerX;
-			dragX = pointerX;
+			transformX = pointerX - pointerXStart + differenceX;
 		}
 	}
 
@@ -75,7 +65,7 @@
 	 */
 
 	function handleWheel(e: WheelEvent) {
-		inertia = (e.deltaY + e.deltaX) / WHEEL_FRICTION;
+		console.log({ wheel: e });
 	}
 
 	/**
@@ -84,6 +74,7 @@
 
 	const setWidth = () => {
 		width = imgs.getBoundingClientRect().width;
+		console.log({ width });
 	};
 
 	/**
