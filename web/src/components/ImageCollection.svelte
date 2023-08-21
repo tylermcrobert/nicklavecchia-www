@@ -10,11 +10,16 @@
 	let raf: number;
 
 	let isDragging = false;
-	let transformX = 0;
 	let width = 0;
+
+	let transformX = 0;
+
 	let differenceX = 0;
-	let pointerX = 0;
 	let pointerXStart = 0;
+
+	let pointerX = 0;
+	let prevPointerX = 0;
+	let velocity = 0;
 
 	/**
 	 * Runs on rAF
@@ -22,6 +27,12 @@
 
 	function updateImagePosition() {
 		raf = requestAnimationFrame(updateImagePosition);
+
+		if (!isDragging) {
+			transformX += velocity;
+			velocity *= 0.95;
+		}
+
 		imgs.style.transform = `translate3d(${transformX}px, 0, 0)`;
 	}
 
@@ -53,9 +64,10 @@
 	function handlePointerMove(e: MouseEvent | TouchEvent) {
 		e.preventDefault();
 
-		pointerX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
-
 		if (isDragging) {
+			prevPointerX = pointerX;
+			pointerX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
+			velocity = pointerX - prevPointerX;
 			transformX = pointerX - pointerXStart + differenceX;
 		}
 	}
