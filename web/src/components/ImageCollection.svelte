@@ -33,6 +33,7 @@
 		}
 
 		if (width / 2 < -transformX) transformX = 0;
+		if (transformX > 0) transformX = width / -2;
 
 		imgs.style.transform = `translate3d(${transformX}px, 0, 0)`;
 	}
