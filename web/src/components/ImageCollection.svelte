@@ -16,9 +16,8 @@
 
 	let differenceX = 0;
 	let pointerXStart = 0;
-
 	let pointerX = 0;
-	let prevPointerX = 0;
+
 	let velocity = 0;
 
 	/**
@@ -65,7 +64,8 @@
 		e.preventDefault();
 
 		if (isDragging) {
-			prevPointerX = pointerX;
+			let prevPointerX = pointerX;
+
 			pointerX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
 			velocity = pointerX - prevPointerX;
 			transformX = pointerX - pointerXStart + differenceX;
