@@ -32,6 +32,8 @@
 			velocity *= 0.95;
 		}
 
+		if (width / 2 < -transformX) transformX = 0;
+
 		imgs.style.transform = `translate3d(${transformX}px, 0, 0)`;
 	}
 
