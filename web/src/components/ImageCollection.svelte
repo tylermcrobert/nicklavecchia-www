@@ -67,8 +67,9 @@
 			let prevClientX = clientX;
 
 			clientX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
-			velocity = clientX - prevClientX;
 			transformX = clientX - clientXStart + differenceX;
+
+			velocity = clientX - prevClientX;
 		}
 	}
 
