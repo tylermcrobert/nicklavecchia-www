@@ -13,11 +13,7 @@
 	let width = 0;
 
 	let transformX = 0;
-
-	let differenceX = 0;
-	let clientXStart = 0;
 	let clientX = 0;
-
 	let velocity = 0;
 
 	/**
@@ -42,10 +38,9 @@
 	 * When mouse or pointer is down
 	 */
 
-	function handleDragStart(e: MouseEvent | TouchEvent) {
+	function handleDragStart() {
+		setWidth();
 		isDragging = true;
-		clientXStart = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
-		differenceX = transformX;
 	}
 
 	/**
@@ -63,13 +58,12 @@
 	function handlePointerMove(e: MouseEvent | TouchEvent) {
 		e.preventDefault();
 
+		let prevClientX = clientX;
+		clientX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
+
 		if (isDragging) {
-			let prevClientX = clientX;
-
-			clientX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
-			transformX = clientX - clientXStart + differenceX;
-
 			velocity = clientX - prevClientX;
+			transformX += velocity;
 		}
 	}
 
@@ -87,7 +81,6 @@
 
 	const setWidth = () => {
 		width = imgs.getBoundingClientRect().width;
-		console.log({ width });
 	};
 
 	/**
