@@ -39,7 +39,6 @@
 	 */
 
 	function handleDragStart() {
-		setWidth();
 		isDragging = true;
 	}
 
@@ -112,7 +111,6 @@
 		on:touchend={handleDragEnd}
 		on:touchmove={handlePointerMove}
 		on:wheel={handleWheel}
-		on:resize={setWidth}
 		on:blur={handleDragEnd}
 	>
 		{#each [...images, ...images] as image}
@@ -120,6 +118,8 @@
 		{/each}
 	</div>
 </div>
+
+<svelte:window on:resize={setWidth} />
 
 <style lang="scss">
 	@import '../styles/mixins';
