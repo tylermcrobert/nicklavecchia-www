@@ -91,6 +91,8 @@
 
 	onMount(() => {
 		setWidth();
+		new ResizeObserver(setWidth).observe(imgs);
+
 		updateImagePosition();
 
 		return () => {
@@ -121,8 +123,6 @@
 		{/each}
 	</div>
 </div>
-
-<svelte:window on:resize={setWidth} />
 
 <style lang="scss">
 	@import '../styles/mixins';
