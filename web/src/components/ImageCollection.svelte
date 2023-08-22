@@ -78,7 +78,7 @@
 	 */
 
 	function handleWheel(e: WheelEvent) {
-		console.log({ wheel: e });
+		transformX -= (e.deltaY + e.deltaX) / 5;
 	}
 
 	/**
