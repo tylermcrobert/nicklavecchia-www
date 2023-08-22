@@ -55,6 +55,9 @@
 	 */
 
 	function handlePointerMove(e: MouseEvent | TouchEvent) {
+		const isPinch = isTouchEvent(e) && e.touches.length >= 2;
+		if (isPinch) return;
+
 		e.preventDefault();
 
 		let prevClientX = clientX;
