@@ -47,7 +47,8 @@
 	 * When mouse or pointer is down
 	 */
 
-	function handleDragStart() {
+	function handleDragStart(e: MouseEvent | TouchEvent) {
+		clientX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
 		isDragging = true;
 	}
 
