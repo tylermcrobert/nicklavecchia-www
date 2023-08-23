@@ -17,7 +17,7 @@
 	let width = 0;
 
 	let transformX = 0;
-	let clientX = 0;
+	let dragX = 0;
 	let velocity = 0;
 
 	/**
@@ -48,7 +48,7 @@
 	 */
 
 	function handleDragStart(e: MouseEvent | TouchEvent) {
-		clientX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
+		dragX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
 		isDragging = true;
 	}
 
@@ -71,10 +71,10 @@
 		e.preventDefault();
 
 		if (isDragging) {
-			const prevClientX = clientX;
-			clientX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
+			const prevDragX = dragX;
+			dragX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
 
-			velocity = clientX - prevClientX;
+			velocity = dragX - prevDragX;
 			transformX += velocity;
 		}
 	}
