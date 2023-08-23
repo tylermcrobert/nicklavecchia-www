@@ -48,8 +48,8 @@
 	 */
 
 	function handleDragStart(e: MouseEvent | TouchEvent) {
-		dragX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
 		isDragging = true;
+		dragX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
 	}
 
 	/**
