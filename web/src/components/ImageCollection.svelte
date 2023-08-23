@@ -70,10 +70,10 @@
 
 		e.preventDefault();
 
-		let prevClientX = clientX;
-		clientX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
-
 		if (isDragging) {
+			const prevClientX = clientX;
+			clientX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
+
 			velocity = clientX - prevClientX;
 			transformX += velocity;
 		}
