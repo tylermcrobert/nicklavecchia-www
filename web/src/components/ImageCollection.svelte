@@ -6,6 +6,9 @@
 
 	export let images: SanityImage[];
 
+	const FRICTION = 0.95;
+	const WHEEL_FRICTION = 5;
+
 	let imgs: HTMLElement;
 	let raf: number;
 
@@ -23,11 +26,13 @@
 	function updateImagePosition() {
 		raf = requestAnimationFrame(updateImagePosition);
 
+		// Handle velocity
 		if (!isDragging) {
 			transformX += velocity;
-			velocity *= 0.95;
+			velocity *= FRICTION;
 		}
 
+		// Handle permanant loop
 		if (width / 2 < -transformX) transformX = 0;
 		if (transformX > 0) transformX = width / -2;
 
@@ -74,7 +79,7 @@
 	 */
 
 	function handleWheel(e: WheelEvent) {
-		transformX -= (e.deltaY + e.deltaX) / 5;
+		transformX -= (e.deltaY + e.deltaX) / WHEEL_FRICTION;
 	}
 
 	/**
