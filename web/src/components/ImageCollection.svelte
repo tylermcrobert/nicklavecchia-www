@@ -8,6 +8,7 @@
 
 	const FRICTION = 0.95;
 	const WHEEL_FRICTION = 5;
+	const MOVE_SPEED = 0.1;
 
 	let imgs: HTMLElement;
 	let raf: number;
@@ -31,6 +32,9 @@
 			transformX += velocity;
 			velocity *= FRICTION;
 		}
+
+		// Constantly move carousel
+		transformX -= MOVE_SPEED;
 
 		// Handle permanant loop
 		if (width / 2 < -transformX) transformX = 0;
