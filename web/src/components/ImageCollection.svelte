@@ -7,7 +7,7 @@
 	export let images: SanityImage[];
 
 	const FRICTION = 0.95;
-	const WHEEL_FRICTION = 4;
+	const WHEEL_FRICTION = 3;
 	const MOVE_SPEED = 0.1;
 
 	let imgs: HTMLElement;
