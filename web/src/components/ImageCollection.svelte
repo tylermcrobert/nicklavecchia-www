@@ -91,9 +91,9 @@
 	 * Sets container width
 	 */
 
-	const setWidth = () => {
-		width = imgs.getBoundingClientRect().width;
-	};
+	function setWidth() {
+		width = imgs?.getBoundingClientRect().width;
+	}
 
 	/**
 	 * Initialize
