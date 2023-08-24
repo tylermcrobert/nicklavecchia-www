@@ -26,6 +26,7 @@
 
 	onMount(() => {
 		const options = {
+			rootMargin: '100% 100% 100% 100%', // Top, right, bottom, left margins
 			threshold: 0
 		};
 
