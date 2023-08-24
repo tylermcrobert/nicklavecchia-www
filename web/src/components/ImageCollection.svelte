@@ -6,33 +6,41 @@
 
 	export let images: SanityImage[];
 
-	const FRICTION = 0.97;
-	const WHEEL_FRICTION = 1.75;
+	const FRICTION = 0.95;
+	const WHEEL_FRICTION = 4;
 	const MOVE_SPEED = 0.1;
 
 	let imgs: HTMLElement;
 	let raf: number;
 
 	let isDragging = false;
-	let inertia = 0;
+	let width = 0;
+
 	let transformX = 0;
 	let dragX = 0;
-	let width = 0;
+	let velocity = 0;
 
 	/**
 	 * Runs on rAF
 	 */
 
-	function tick() {
-		raf = requestAnimationFrame(tick);
+	function updateImagePosition() {
+		raf = requestAnimationFrame(updateImagePosition);
 
-		transformX += inertia + MOVE_SPEED;
-		inertia *= FRICTION;
+		// Handle velocity
+		if (!isDragging) {
+			transformX += velocity;
+			velocity *= FRICTION;
+		}
 
-		if (transformX >= width / 2) transformX = 1;
-		if (transformX < 1) transformX = width / 2;
+		// Constantly move carousel
+		transformX -= MOVE_SPEED;
 
-		imgs.style.transform = `translate3d(-${transformX}px, 0, 0)`;
+		// Handle permanant loop
+		if (width / 2 < -transformX) transformX = 0;
+		if (transformX > 0) transformX = width / -2;
+
+		imgs.style.transform = `translate3d(${transformX}px, 0, 0)`;
 	}
 
 	/**
@@ -40,7 +48,6 @@
 	 */
 
 	function handleDragStart(e: MouseEvent | TouchEvent) {
-		setWidth();
 		isDragging = true;
 		dragX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
 	}
@@ -58,15 +65,17 @@
 	 */
 
 	function handlePointerMove(e: MouseEvent | TouchEvent) {
-		const isTwoFingerTouch = isTouchEvent(e) && e.touches.length >= 2;
-		if (isTwoFingerTouch) return;
+		const isPinch = isTouchEvent(e) && e.touches.length >= 2;
+		if (isPinch) return;
 
 		e.preventDefault();
 
 		if (isDragging) {
-			const pointerX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
-			inertia = dragX - pointerX;
-			dragX = pointerX;
+			const prevDragX = dragX;
+			dragX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
+
+			velocity = dragX - prevDragX;
+			transformX += velocity;
 		}
 	}
 
@@ -75,16 +84,16 @@
 	 */
 
 	function handleWheel(e: WheelEvent) {
-		inertia = (e.deltaY + e.deltaX) / WHEEL_FRICTION;
+		transformX -= (e.deltaY + e.deltaX) / WHEEL_FRICTION;
 	}
 
 	/**
 	 * Sets container width
 	 */
 
-	const setWidth = () => {
-		width = imgs.getBoundingClientRect().width;
-	};
+	function setWidth() {
+		width = imgs?.getBoundingClientRect().width;
+	}
 
 	/**
 	 * Initialize
@@ -92,7 +101,9 @@
 
 	onMount(() => {
 		setWidth();
-		tick();
+		new ResizeObserver(setWidth).observe(imgs);
+
+		updateImagePosition();
 
 		return () => {
 			cancelAnimationFrame(raf);
@@ -115,7 +126,6 @@
 		on:touchend={handleDragEnd}
 		on:touchmove={handlePointerMove}
 		on:wheel={handleWheel}
-		on:resize={setWidth}
 		on:blur={handleDragEnd}
 	>
 		{#each [...images, ...images] as image}
