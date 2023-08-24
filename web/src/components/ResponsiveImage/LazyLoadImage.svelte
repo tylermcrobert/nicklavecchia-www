@@ -26,9 +26,7 @@
 
 	onMount(() => {
 		const options = {
-			root: null, // Use the viewport as the root
-			rootMargin: '100% 100% 100% 100%', // Top, right, bottom, left margins
-			threshold: 0.1 // 0.1 means when 10% of the image is visible
+			threshold: 0
 		};
 
 		function handleIntersection(
