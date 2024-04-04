@@ -1,3 +1,7 @@
+/**
+ * Constants used by nav and page transitions
+ */
+
 export const MODAL_ROUTES = ['/fine-art/[slug]', '/collection/[slug]'];
 
 export const duration = {
@@ -6,10 +10,3 @@ export const duration = {
 	long: 1,
 	xLong: 1.2
 };
-
-/** Navigation top-level routes */
-export const NAV_ROUTES = [
-	{ display: 'Portfolio', href: '/' },
-	{ display: 'About', href: '/about' },
-	{ display: 'Fine Art', href: '/fine-art' }
-];

@@ -16,6 +16,12 @@
 	$: isLateral = getNavigatingType($navigating).lateral;
 	$: isSecondaryEmpty = !$navStore.links && !$navStore.title;
 
+	const ROUTES = [
+		{ display: 'Portfolio', href: '/' },
+		{ display: 'About', href: '/about' },
+		{ display: 'Fine Art', href: '/fine-art' }
+	];
+
 	/**
 	 * Fade element out.
 	 * NOTE: Applies to multiple elements
@@ -105,7 +111,7 @@
 	<!-- Right side  -->
 	{#if !isModal}
 		<ul class="links" in:animateIn out:animateOut>
-			{#each NAV_ROUTES as { display, href }}
+			{#each ROUTES as { display, href }}
 				<li>
 					<a {href} class:underline={href === $page.route.id}>
 						{display}
